@@ -39,6 +39,16 @@ body {
   gap: 5px;
 }
 
+/* Make it responsive when in a bigger display device; so basically the grid information above is for mobile and the one below is for desktop */
+@media (min-width: 768px) {
+  .grid {
+    width: 490px;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: 50px repeat(3, 150px) 60px;
+    gap: 20px;
+  }
+}
+
 /* selecting each grid div (the children of that grid container) */
 .turn {
   background-color: green;
