@@ -23,6 +23,14 @@ body {
   background-color: var(--dark-gray);
 }
 
+body {
+  padding: 90px 20px;
+  display: flex;
+  flex-direction: column; /* So it goes up and down instead of left and right */
+  justify-content: center;
+  align-items: center;
+}
+
 /* grid container */
 .grid {
   display: grid;
@@ -50,4 +58,18 @@ body {
   background-color: purple;
 }
 
-/* In summary: 1st make the layout you need and then start working with it! */
+/* Footer styles */
+
+footer {
+  color: white;
+  margin-top: 50px;
+}
+
+footer p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+footer a {
+  color: var(--yellow);
+}
