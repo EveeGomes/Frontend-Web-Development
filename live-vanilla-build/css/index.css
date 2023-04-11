@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 
+/* Defined variables for colors; then to use it we need var(--name) */
 :root {
   --dark-gray: #1a2a32;
   --gray: #2e4756;
@@ -49,9 +50,15 @@ body {
 }
 
 .turn {
-  background-color: green;
+  color: var(--yellow);
+  /* This tells how to align itself within the grid */
   grid-column-start: 1;
   grid-column-end: 3;
+  align-self: center;
+  /* Specifications for how the content inside the container is going to be aligned */
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .square {
