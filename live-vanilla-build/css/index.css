@@ -26,7 +26,13 @@ body {
 /* grid container */
 .grid {
   display: grid;
+  grid-template-columns: repeat(
+    3,
+    80px
+  ); /* Means each column will be 80px wide */
+  grid-template-rows: 50px repeat(3, 80px) 60px; /* 1st row is 50px tall, then the next 3 rows will be 80px tall, and the final one will be 60px height*/
 }
+/* Some changes as he does can/will interfere on the HTML file, so we can go there and change it as we needed, like he does with the number of divs that's needed to make the css to look like the way we need it to be.*/
 
 /* selecting each grid div  */
 .grid div {
