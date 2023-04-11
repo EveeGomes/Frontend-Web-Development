@@ -31,9 +31,11 @@ body {
   gap: 5px;
 }
 
-/* selecting each grid div */
+/* selecting each grid div (the children of that grid container) */
 .turn {
   background-color: green;
+  grid-column-start: 1; /* It'll start in the first column */
+  grid-column-end: 3; /* and ends in the 3rd; therefore it spands 2 columns wide */
 }
 
 .square {
@@ -43,3 +45,9 @@ body {
 .score {
   background-color: blue;
 }
+
+.actions {
+  background-color: purple;
+}
+
+/* In summary: 1st make the layout you need and then start working with it! */
