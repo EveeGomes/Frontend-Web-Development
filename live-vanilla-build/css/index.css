@@ -36,8 +36,7 @@ body {
 
 /* selecting each grid div  */
 .grid div {
-  height: 20px;
-  width: 20px;
+  /* No need of width and height anymore as the grid-template takes care of that now. */
   background-color: red;
   margin: 10px;
 }
