@@ -61,6 +61,46 @@ body {
   gap: 20px;
 }
 
+@keyframes turn-text-animation {
+  /* 45:22 */
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+/* Add selectors for the turn text/paragraph */
+.turn p {
+  font-size: 14px;
+  animation: 0.6s ease-in-out turn-text-animation;
+}
+
+@keyframes turn-icon-animation {
+  /* ~43:50 */
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Add selectors for the turn icon */
+.turn i {
+  font-size: 1.8rem;
+  margin-left: 10px;
+  animation: 0.6s ease-in-out turn-icon-animation;
+  /* To add an animation in css, we use the animation property and set a time for it, how it should behave and a name; 
+  With the name we can use it to reference it in the keyframes above. */
+}
+
 .square {
   background-color: red;
 }
