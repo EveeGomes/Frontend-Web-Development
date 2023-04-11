@@ -26,18 +26,20 @@ body {
 /* grid container */
 .grid {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    80px
-  ); /* Means each column will be 80px wide */
-  grid-template-rows: 50px repeat(3, 80px) 60px; /* 1st row is 50px tall, then the next 3 rows will be 80px tall, and the final one will be 60px height*/
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: 50px repeat(3, 80px) 60px;
   gap: 5px;
 }
-/* Some changes as he does can/will interfere on the HTML file, so we can go there and change it as we needed, like he does with the number of divs that's needed to make the css to look like the way we need it to be.*/
 
-/* selecting each grid div  */
-.grid div {
-  /* No need of width and height anymore as the grid-template takes care of that now. */
+/* selecting each grid div */
+.turn {
+  background-color: green;
+}
+
+.square {
   background-color: red;
-  /* No need of margin as we add gap into the .grid so everything is spaced evenly*/
+}
+
+.score {
+  background-color: blue;
 }
