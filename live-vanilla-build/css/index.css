@@ -109,8 +109,12 @@ body {
   background-color: blue;
 }
 
-.actions {
+/* Menu styles */
+/* The menu actions will be controlled with js for the open and close behavior, but we can style it */
+.menu {
   background-color: purple;
+  /* This is will tell where it has to open in relation to the DOM */
+  position: relative;
 }
 
 /* Footer styles */
