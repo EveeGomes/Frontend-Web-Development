@@ -1,8 +1,9 @@
+// use the querySelector and add a class name so it'll select any element in the html whithin that class
 const menu = document.querySelector(".menu");
+const menuItems = menu.querySelector(".items");
 
-// add an event listener that'll listen to a click event;
-// and at this event we'll have a callback function which will get an event object
-// this event object has a target that represent the menu we've declared above as a const menu
+// now, once we see that the button on the menu has been clicked, we'll add some functionality
+// check video @1h:30m till ~33min for explanation on how to come up with that solution
 menu.addEventListener("click", (event) => {
-  console.log(event.target);
+  menuItems.classList.toggle("hidden");
 });
