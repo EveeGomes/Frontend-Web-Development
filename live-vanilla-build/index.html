@@ -23,14 +23,16 @@
 
         <!-- Dropdown menu -->
         <div class="menu">
-          <button class="menu-btn" data-id="menu-btn">
+          <button class="menu-btn">
             Actions
             <i class="fa-solid fa-chevron-down"></i>
           </button>
-          <!-- <div class="items border hidden" data-id="menu-items">
-            <button data-id="reset-btn">Reset</button>
-            <button data-id="new-round-btn">New Round</button>
-          </div> -->
+          <!-- This div will give the options for the menu; they'll be hidden using css, but the js will unhidden them -->
+          <!-- The data-id aren't used yet. The style will be done based on their parents for now -->
+          <div class="items border hidden">
+            <button>Reset</button>
+            <button>New Round</button>
+          </div>
         </div>
 
         <!-- Game board -->
