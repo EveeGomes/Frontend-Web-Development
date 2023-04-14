@@ -12,4 +12,4 @@ const App = {
 };
 
 // To initialize init() we gotta use the window and the object and use event listener as the load with the callback function as the init method:
-window.addEventListener("load", () => App.init());
+window.addEventListener("load", App.init);
