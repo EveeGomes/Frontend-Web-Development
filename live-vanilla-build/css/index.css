@@ -162,11 +162,38 @@ body {
 }
 
 .square {
-  background-color: red;
+  background-color: var(--gray);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+/* The hover styles gives the user the certainty they can interact with that element. */
+.square:hover {
+  cursor: pointer;
+  opacity: 90%;
 }
 
 .score {
-  background-color: blue;
+  /* display is set to flex so that each box is a flex container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+/* Add some sub-selectors to change the content of each scoreboard box */
+.score p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.score span {
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 /* Footer styles */
