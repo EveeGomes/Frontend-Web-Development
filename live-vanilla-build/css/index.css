@@ -33,13 +33,10 @@ body {
 }
 
 /* Shared utility classes */
-/* By adding hidden and border classes here, it'll hide the buttons in the menu element! */
 .hidden {
-  /* Add !important to make sure nothing will conflit with it. */
   display: none !important;
 }
 
-/* shortcuts for some colors (optional... just make things a bit easier) */
 .yellow {
   color: var(--yellow);
 }
@@ -76,18 +73,15 @@ body {
 
 .turn {
   color: var(--yellow);
-  /* This tells how to align itself within the grid */
   grid-column-start: 1;
   grid-column-end: 3;
   align-self: center;
-  /* Specifications for how the content inside the container is going to be aligned */
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
 @keyframes turn-text-animation {
-  /* 45:22 */
   0% {
     opacity: 0;
     transform: translateX(-20px);
@@ -105,7 +99,6 @@ body {
 }
 
 @keyframes turn-icon-animation {
-  /* ~43:50 */
   0% {
     transform: scale(1);
   }
@@ -122,20 +115,14 @@ body {
   font-size: 1.8rem;
   margin-left: 10px;
   animation: 0.6s ease-in-out turn-icon-animation;
-  /* To add an animation in css, we use the animation property and set a time for it, how it should behave and a name; 
-  With the name we can use it to reference it in the keyframes above. */
 }
 
 /* Menu styles */
-/* The menu actions will be controlled with js for the open and close behavior, but we can style it */
 .menu {
-  background-color: purple;
-  /* This is will tell where it has to open in relation to the DOM */
   position: relative;
 }
 
 .menu-btn {
-  /* Make it 100% of its container; 49:46 */
   width: 100%;
   height: 100%;
   display: flex;
@@ -153,7 +140,6 @@ body {
 }
 
 .items {
-  /* They will be positioned absolutely relative to the menu element. ~52min */
   position: absolute;
   z-index: 10;
   top: 60px;
@@ -163,7 +149,6 @@ body {
   padding: 10px;
 }
 
-/* Do the buttons relative to items (that's why .menu isn't used here) */
 .items button {
   background-color: transparent;
   padding: 8px;
