@@ -9,8 +9,6 @@ const App = {
   },
 
   init() {
-    console.log(App.$.squares); // this shows in the browser console a nodelist with all squares. They have indexes so it'll be better to add to each HTML elements an id
-
     App.$.menu.addEventListener("click", (event) => {
       App.$.menuItems.classList.toggle("hidden");
     });
@@ -21,6 +19,16 @@ const App = {
 
     App.$.newRoundBtn.addEventListener("click", (event) => {
       console.log("Add a new round");
+    });
+
+    // Adding an event listener to all squares in the game board container
+    // But since it's a nodelist we need to iterate through them
+    App.$.squares.forEach((square) => {
+      // each square
+      square.addEventListener("click", (event) => {
+        // receives an event listener for click and the event returned from that listener will perform/give something that'll be between {}
+        console.log(`Square with id ${event.target.id} was clicked`); // ${} between `` means interpolation
+      });
     });
   },
 };
