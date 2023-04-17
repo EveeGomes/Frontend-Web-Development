@@ -5,15 +5,13 @@ const App = {
     menuItems: document.querySelector('[data-id="menu-items"]'),
     resetBtn: document.querySelector('[data-id="reset-btn"]'),
     newRoundBtn: document.querySelector('[data-id="new-round-btn"]'),
-    squares: document.querySelectorAll('[data-id="square"]'), // "All" because we want all the elements to have the data-id of square
+    squares: document.querySelectorAll('[data-id="square"]'),
   },
 
   init() {
-    // When the window is loaded, init will be called and then it'll call registerEventListener
     App.registerEventListener();
   },
 
-  // define a new method to leave init method clear for organizational purpose and this one will have the event listeners
   registerEventListener() {
     App.$.menu.addEventListener("click", (event) => {
       App.$.menuItems.classList.toggle("hidden");
@@ -27,13 +25,9 @@ const App = {
       console.log("Add a new round");
     });
 
-    // Adding an event listener to all squares in the game board container
-    // But since it's a nodelist we need to iterate through them
     App.$.squares.forEach((square) => {
-      // each square
       square.addEventListener("click", (event) => {
-        // receives an event listener for click and the event returned from that listener will perform/give something that'll be between {}
-        console.log(`Square with id ${event.target.id} was clicked`); // ${} between `` means interpolation
+        console.log(`Square with id ${event.target.id} was clicked`);
       });
     });
   },
