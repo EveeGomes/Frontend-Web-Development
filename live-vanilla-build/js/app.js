@@ -9,6 +9,12 @@ const App = {
   },
 
   init() {
+    // When the window is loaded, init will be called and then it'll call registerEventListener
+    App.registerEventListener();
+  },
+
+  // define a new method to leave init method clear for organizational purpose and this one will have the event listeners
+  registerEventListener() {
     App.$.menu.addEventListener("click", (event) => {
       App.$.menuItems.classList.toggle("hidden");
     });
