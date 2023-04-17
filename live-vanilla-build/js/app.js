@@ -35,6 +35,7 @@ const App = {
     App.$.squares.forEach((square) => {
       square.addEventListener("click", (event) => {
         console.log(`Square with id ${event.target.id} was clicked`);
+        console.log(`Current player is ${App.state.currentPlayer}`);
 
         // the icon is created regardless of the style since it'll be added depending on the currentPlayer
         const icon = document.createElement("i");
@@ -47,10 +48,12 @@ const App = {
           icon.classList.add("fa-solid", "fa-o", "turquoise");
         }
 
-        event.target.replaceChildren(icon);
+        // update the state everytime a move happens:
+        // set the state of currentPlayer to whoever is not playing this move; so if the current player is 1, we'll set it to 2, otherwise we'll set to 1
+        App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1;
 
-        // <i class="fa-solid fa-x yellow"></i>
-        // <i class="fa-solid fa-o turquoise"></i>
+        // And then this will replace the content on the target square with the icon having a certain style
+        event.target.replaceChildren(icon);
       });
     });
   },
