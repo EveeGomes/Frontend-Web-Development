@@ -28,6 +28,11 @@ const App = {
     App.$.squares.forEach((square) => {
       square.addEventListener("click", (event) => {
         console.log(`Square with id ${event.target.id} was clicked`);
+
+        // Now, use those as reference in order to build the js code.
+        // We'll build these HTML elements and add as children to the appropriate div that has been clicked
+        // <i class="fa-solid fa-x yellow"></i>
+        // <i class="fa-solid fa-o turquoise"></i>
       });
     });
   },
