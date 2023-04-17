@@ -37,23 +37,26 @@ const App = {
         console.log(`Square with id ${event.target.id} was clicked`);
         console.log(`Current player is ${App.state.currentPlayer}`);
 
-        // the icon is created regardless of the style since it'll be added depending on the currentPlayer
-        const icon = document.createElement("i");
+        // In order to prevent the state to update while the user clicks on the same square where there's already an icon, we need to add a check.
+        // instead of checking if the event.target has child nodes, we'll check if the square has it.
+        // This prevents the behavior of adding a duplicate in case the user clicks on the icon instead of the square
+        if (square.hasChildNodes()) {
+          return;
+        }
 
         const currentPlayer = App.state.currentPlayer;
+
+        const icon = document.createElement("i");
         if (currentPlayer === 1) {
-          // add a class list according to the currentPlayer so it'll receive the appropriate style!
           icon.classList.add("fa-solid", "fa-x", "yellow");
         } else {
           icon.classList.add("fa-solid", "fa-o", "turquoise");
         }
 
-        // update the state everytime a move happens:
-        // set the state of currentPlayer to whoever is not playing this move; so if the current player is 1, we'll set it to 2, otherwise we'll set to 1
         App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1;
 
-        // And then this will replace the content on the target square with the icon having a certain style
-        event.target.replaceChildren(icon);
+        // Instead of replacing the event target's children, we have to replace the square's.
+        square.replaceChildren(icon);
       });
     });
   },
