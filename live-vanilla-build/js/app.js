@@ -8,6 +8,13 @@ const App = {
     squares: document.querySelectorAll('[data-id="square"]'),
   },
 
+  // Create a state property; this won't be persistant across browser refreshers because it's just a variable so it'll be re-initialized and reassigned everytime we refresh
+  state: {
+    // 1st state we want; the player 1 will always start the game; and that state it'll also allow us to decide in the event listener for the icon, which one to draw (x or o)
+    // everytime a move is made, we'll change the state (all in the event listener for the game board elements)
+    currentPlayer: 1,
+  },
+
   init() {
     App.registerEventListener();
   },
@@ -29,16 +36,18 @@ const App = {
       square.addEventListener("click", (event) => {
         console.log(`Square with id ${event.target.id} was clicked`);
 
-        // Create an i tag
+        // the icon is created regardless of the style since it'll be added depending on the currentPlayer
         const icon = document.createElement("i");
-        // then create a token list
-        icon.classList.add("fa-solid", "fa-x", "yellow"); // hardcoding
 
-        // insert the element into the one that was clicked
+        const currentPlayer = App.state.currentPlayer;
+        if (currentPlayer === 1) {
+          // add a class list according to the currentPlayer so it'll receive the appropriate style!
+          icon.classList.add("fa-solid", "fa-x", "yellow");
+        } else {
+          icon.classList.add("fa-solid", "fa-o", "turquoise");
+        }
+
         event.target.replaceChildren(icon);
-
-        // Now, use those as reference in order to build the js code.
-        // We'll build these HTML elements and add as children to the appropriate div that has been clicked
 
         // <i class="fa-solid fa-x yellow"></i>
         // <i class="fa-solid fa-o turquoise"></i>
