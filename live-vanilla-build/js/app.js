@@ -44,7 +44,7 @@ const App = {
         // adding some convenience method for the lastMove
         const getOppositePlayer = (playerId) => (playerId === 1 ? 2 : 1);
         // so if the length is 0 we go with 1, otherwise we'll grab the lastMove. This lastMove has a playerId in it (like any other move), but it's the playerId from the opposite move
-        App.state.currentPlayer =
+        const currentPlayer =
           App.state.moves.length === 0
             ? 1
             : getOppositePlayer(lastMove.playerId);
