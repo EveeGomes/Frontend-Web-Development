@@ -14,8 +14,8 @@ const App = {
 
   // this function will take an array of moves as argument
   getGameStatus(moves) {
-    const p1Moves = moves.filter((move) => move.player.id === 1);
-    const p2Moves = moves.filter((move) => move.player.id === 2);
+    const p1Moves = moves.filter((move) => move.playerId === 1);
+    const p2Moves = moves.filter((move) => move.playerId === 2);
 
     const winningPatterns = [
       [1, 2, 3],
