@@ -41,7 +41,7 @@ const App = {
           return existingMove !== undefined;
         };
         // Then check if there's a move in that square already!
-        if (hasMove(+squareId)) {
+        if (hasMove(+square.id)) {
           return;
         }
 
@@ -66,11 +66,6 @@ const App = {
           squareId: +square.id,
           playerId: currentPlayer,
         });
-
-        App.state.currentPlayer = currentPlayer === 1 ? 2 : 1;
-
-        // only to track purpose while implementing the new updates
-        console.log(App.state);
 
         square.replaceChildren(icon);
 
