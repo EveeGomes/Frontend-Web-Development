@@ -39,6 +39,7 @@ const App = {
 
         // Determine which player icon to add to the square
 
+        // check: 2h:28min
         const lastMove = App.state.moves.at(-1);
         // adding some convenience method for the lastMove
         const getOppositePlayer = (playerId) => (playerId === 1 ? 2 : 1);
