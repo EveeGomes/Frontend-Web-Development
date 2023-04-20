@@ -49,14 +49,12 @@ const App = {
           icon.classList.add("fa-solid", "fa-o", "turquoise");
         }
 
-        // As well as updating the state, we also want to update the move. This has to be before we update the current player:
+        // Updating the moves state
         App.state.moves.push({
-          squareId: +square.id, // we'll reference the square; the + sign will work as a coersion to make it a number type
-          playerId: currentPlayer, //
+          squareId: +square.id,
+          playerId: currentPlayer,
         });
-        // the new move is going to be an object
-
-        // refactoring App.state.currentPlayer to currentPlayer since we already have this declared as const before
+        // Updating the currentPlayer state
         App.state.currentPlayer = currentPlayer === 1 ? 2 : 1;
 
         // only to track purpose while implementing the new updates
