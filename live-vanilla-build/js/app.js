@@ -33,7 +33,17 @@ const App = {
     App.$.squares.forEach((square) => {
       square.addEventListener("click", (event) => {
         // Check if there's already a play, if so, return early
-        if (square.hasChildNodes()) {
+        // Now, instead of checking whether the squares have child nodes (which actually relies on the DOM), we should check the state of the game!
+        // we use a help method which we'll name hasMove, where we define a function that takes a squareId (a number), and we look for this squareId in the array of moves
+        const hasMove = (squareId) => {
+          const existingMove = App.state.moves.find(
+            (move) => move.squareId === squareId
+          );
+          return existingMove !== undefined; // it's the same as !== null
+        };
+
+        if (hasMove(+squareId)) {
+          // use + to make sure it's a number!
           return;
         }
 
