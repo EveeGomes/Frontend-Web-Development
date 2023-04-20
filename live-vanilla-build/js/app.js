@@ -34,16 +34,12 @@ const App = {
 
     App.$.squares.forEach((square) => {
       square.addEventListener("click", (event) => {
-        console.log(`Square with id ${event.target.id} was clicked`);
-        console.log(`Current player is ${App.state.currentPlayer}`);
-
-        // In order to prevent the state to update while the user clicks on the same square where there's already an icon, we need to add a check.
-        // instead of checking if the event.target has child nodes, we'll check if the square has it.
-        // This prevents the behavior of adding a duplicate in case the user clicks on the icon instead of the square
+        // Check if there's already a play, if so, return early
         if (square.hasChildNodes()) {
           return;
         }
 
+        // Determine which player icon to add to the square
         const currentPlayer = App.state.currentPlayer;
 
         const icon = document.createElement("i");
@@ -55,8 +51,9 @@ const App = {
 
         App.state.currentPlayer = App.state.currentPlayer === 1 ? 2 : 1;
 
-        // Instead of replacing the event target's children, we have to replace the square's.
         square.replaceChildren(icon);
+
+        // Check if there's a winner or tie game
       });
     });
   },
