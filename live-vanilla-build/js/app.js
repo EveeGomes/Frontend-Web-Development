@@ -13,6 +13,44 @@ const App = {
     moves: [],
   },
 
+  // this function will take an array of moves as argument
+  getGameStatus(moves) {
+    // the moves array is basically the entire game
+    const p1Moves = moves.filter((move) => move.player.id === 1);
+    const p2Moves = moves.filter((move) => move.playerId === 2);
+
+    // check 2h:36min
+    const winningPatterns = [
+      [1, 2, 3],
+      [1, 5, 9],
+      [1, 4, 7],
+      [2, 5, 8],
+      [3, 5, 7],
+      [3, 6, 9],
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+
+    // loop through the winningPatterns and check if the player moves match all them so it'll be the winner
+    let winner = null;
+
+    winningPatterns.forEach((pattern) => {
+      // pattern variable represent one of the arrays inside winningPatterns (like [1, 2, 3])
+      // so we break it down into a function that'll check for the matching
+      const p1Wins = pattern.every((v) => p1Moves.includes(v)); // v is for value
+      const p2Wins = pattern.every((v) => p2Moves.includes(v));
+
+      if (p1Wins) winner = 1;
+      if (p2Wins) winner = 2;
+    });
+
+    return {
+      // we'll add a placeholder for now in each but then it'll be changed to return dynamic values
+      status: "in-progress", // in-progress | complete
+      winner: 1, // 1 | 2 | null (tie)
+    };
+  },
+
   init() {
     App.registerEventListener();
   },
@@ -70,6 +108,8 @@ const App = {
         square.replaceChildren(icon);
 
         // Check if there's a winner or tie game
+        // Now once we have and use the array of moves to track the state of the game, we also check if there's a winner or a tie or even if still in progress
+        // we'll use a utility function (for now we'll put inside the App definition)
       });
     });
   },
