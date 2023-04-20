@@ -45,9 +45,9 @@ const App = {
     });
 
     return {
-      // we'll add a placeholder for now in each but then it'll be changed to return dynamic values
-      status: "in-progress", // in-progress | complete
-      winner: 1, // 1 | 2 | null (tie)
+      // winner != null means some of the players had won the game before all 9 squares have been used
+      status: moves.length === 9 || winner != null ? "complete" : "in-progress",
+      winner,
     };
   },
 
