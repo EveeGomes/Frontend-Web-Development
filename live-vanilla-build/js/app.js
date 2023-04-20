@@ -37,18 +37,15 @@ const App = {
           return;
         }
 
-        // Determine which player icon to add to the square
-
-        // check: 2h:28min
+        // Find the who's the current player
         const lastMove = App.state.moves.at(-1);
-        // adding some convenience method for the lastMove
         const getOppositePlayer = (playerId) => (playerId === 1 ? 2 : 1);
-        // so if the length is 0 we go with 1, otherwise we'll grab the lastMove. This lastMove has a playerId in it (like any other move), but it's the playerId from the opposite move
         const currentPlayer =
           App.state.moves.length === 0
             ? 1
             : getOppositePlayer(lastMove.playerId);
 
+        // Determine which player icon to add to the square
         const icon = document.createElement("i");
         if (currentPlayer === 1) {
           icon.classList.add("fa-solid", "fa-x", "yellow");
