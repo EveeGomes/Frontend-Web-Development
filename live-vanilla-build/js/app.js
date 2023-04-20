@@ -31,6 +31,10 @@ const App = {
     let winner = null;
 
     winningPatterns.forEach((pattern) => {
+      // to debug:
+      // add these to get logged as an object
+      console.log({ pattern, p1Moves, p2Moves });
+
       const p1Wins = pattern.every((v) => p1Moves.includes(v));
       const p2Wins = pattern.every((v) => p2Moves.includes(v));
 
