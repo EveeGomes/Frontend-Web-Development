@@ -9,10 +9,8 @@ const App = {
   },
 
   state: {
-    currentPlayer: 1,
-    // track an array of game moves to finally start working on the winning possibilities
-    // these moves will be from the player that has played
-    moves: [], // leaving empty since it's the default
+    // we'll simplify things and remove the currentPlayer property to derive this idea from the number of moves (from the moves array)
+    moves: [],
   },
 
   init() {
@@ -54,6 +52,7 @@ const App = {
           squareId: +square.id,
           playerId: currentPlayer,
         });
+
         // Updating the currentPlayer state
         App.state.currentPlayer = currentPlayer === 1 ? 2 : 1;
 
