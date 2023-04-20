@@ -8,11 +8,11 @@ const App = {
     squares: document.querySelectorAll('[data-id="square"]'),
   },
 
-  // Create a state property; this won't be persistant across browser refreshers because it's just a variable so it'll be re-initialized and reassigned everytime we refresh
   state: {
-    // 1st state we want; the player 1 will always start the game; and that state it'll also allow us to decide in the event listener for the icon, which one to draw (x or o)
-    // everytime a move is made, we'll change the state (all in the event listener for the game board elements)
     currentPlayer: 1,
+    // track an array of game moves to finally start working on the winning possibilities
+    // these moves will be from the player that has played
+    moves: [{ squareId: 1, player: 1 }], // example: this tracks if the player 1 clicked on square 1
   },
 
   init() {
