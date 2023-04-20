@@ -61,7 +61,7 @@ const App = {
           icon.classList.add("fa-solid", "fa-o", "turquoise");
         }
 
-        // Updating the moves state
+        // Updating the moves state (updating the array of moves!)
         App.state.moves.push({
           squareId: +square.id,
           playerId: currentPlayer,
