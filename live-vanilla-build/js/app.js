@@ -38,7 +38,15 @@ const App = {
         }
 
         // Determine which player icon to add to the square
-        const currentPlayer = App.state.currentPlayer;
+
+        // All we need is to track the number of moves to also know who's the "currentPlayer"
+        // So, if the length is equal to 0, then "player 1" will start. Player 1 will always start the game based on this logic
+        // then, if it's not equal to zero ( === 0 ? 1 : ...), we need to check for the last move of the game (so the last element of moves array), and grab the player who's opposite of that player
+        const lastMove = App.state.moves.at(-1); // .at(-1) will grab the last element of the array; it's the same as doing: App.state.moves[App.state.moves.length - 1]
+        // if there's nothing in the array, the result could be undefined
+        // so if the length is 0 we go with 1, otherwise we'll grab the lastMove. This lasMove has a playerId in it
+        App.state.currentPlayer =
+          App.state.moves.length === 0 ? 1 : lastMove.playerId;
 
         const icon = document.createElement("i");
         if (currentPlayer === 1) {
@@ -53,10 +61,7 @@ const App = {
           playerId: currentPlayer,
         });
 
-        // All we need is to track the number of moves to also know who's the "currentPlayer"
-        // So, if the length is equal to 0, then "player 1" will start. Player 1 will always start the game based on this logic
-        // then, if it's not equal to zero ( === 0 ? 1 : ...), we need to check for the last move of the game (so the last element of moves array), and grab the player who's opposite of that player
-        App.state.currentPlayer = App.state.moves.length === 0 ? 1
+        App.state.currentPlayer = currentPlayer === 1 ? 2 : 1;
 
         // only to track purpose while implementing the new updates
         console.log(App.state);
