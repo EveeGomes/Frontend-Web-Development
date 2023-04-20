@@ -12,21 +12,13 @@ const App = {
     moves: [],
   },
 
-  // this function will take an array of moves as argument
   getGameStatus(moves) {
-    // when filtering the player moves like this: const p1Moves = moves.filter((move) => move.playerId === 1);
-    // it'll just give the entire move... where doing console.log(p1Moves); we see an array with an object that has squareId and playerId
-    // then when we compare that with the const p1Wins = pattern.every((v) => p1Moves.includes(v)); we're actually comparing a number (the key of the square) to that object
-    // therefore, they'll never equal each other...
-
-    // so to correct that, we gotta add to the .map utility to the end of the player moves and map that move to be a number value that's equal to the squareId
     const p1Moves = moves
       .filter((move) => move.playerId === 1)
       .map((move) => +move.squareId);
     const p2Moves = moves
       .filter((move) => move.playerId === 2)
       .map((move) => +move.squareId);
-    // ps: playerId will be returned in the registerEventListener(), at the end when we're checking the status!!
 
     const winningPatterns = [
       [1, 2, 3],
@@ -42,10 +34,6 @@ const App = {
     let winner = null;
 
     winningPatterns.forEach((pattern) => {
-      // to debug:
-      // add these to get logged as an object (check 2h:40min)
-      console.log({ pattern, p1Moves, p2Moves });
-
       const p1Wins = pattern.every((v) => p1Moves.includes(v));
       const p2Wins = pattern.every((v) => p2Moves.includes(v));
 
@@ -116,10 +104,7 @@ const App = {
         square.replaceChildren(icon);
 
         // Check if there's a winner or tie game
-        const status = App.getGameStatus(App.state.moves); // App.state.moves represents the newest array of moves that has been played!
-
-        // console log the status only to check what we have so far:
-        console.log(status);
+        const status = App.getGameStatus(App.state.moves);
       });
     });
   },
