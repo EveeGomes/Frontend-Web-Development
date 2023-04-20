@@ -15,7 +15,7 @@ const App = {
   // this function will take an array of moves as argument
   getGameStatus(moves) {
     const p1Moves = moves.filter((move) => move.player.id === 1);
-    const p2Moves = moves.filter((move) => move.playerId === 2);
+    const p2Moves = moves.filter((move) => move.player.id === 2);
 
     const winningPatterns = [
       [1, 2, 3],
@@ -101,6 +101,10 @@ const App = {
         square.replaceChildren(icon);
 
         // Check if there's a winner or tie game
+        const status = App.getGameStatus(App.state.moves); // App.state.moves represents the newest array of moves that has been played!
+
+        // console log the status only to check what we have so far:
+        console.log(status);
       });
     });
   },
