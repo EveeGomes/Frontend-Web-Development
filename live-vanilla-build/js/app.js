@@ -53,8 +53,10 @@ const App = {
           playerId: currentPlayer,
         });
 
-        // Updating the currentPlayer state
-        App.state.currentPlayer = currentPlayer === 1 ? 2 : 1;
+        // All we need is to track the number of moves to also know who's the "currentPlayer"
+        // So, if the length is equal to 0, then "player 1" will start. Player 1 will always start the game based on this logic
+        // then, if it's not equal to zero ( === 0 ? 1 : ...), we need to check for the last move of the game (so the last element of moves array), and grab the player who's opposite of that player
+        App.state.currentPlayer = App.state.moves.length === 0 ? 1
 
         // only to track purpose while implementing the new updates
         console.log(App.state);
