@@ -67,6 +67,14 @@ const App = {
       console.log("Add a new round");
     });
 
+    // Add event listener to the modal's button
+    App.$.modalBtn.addEventListener("click", (event) => {
+      App.state.moves = []; // setting moves array to be empty we're resetting the game; NOTE: this right here doesn't change the UI! So the squares still have the icons from the last game.
+      // here we'll empty the squares:
+      App.$.squares.forEach((square) => square.replaceChildren());
+      App.$.modal.classList.add("hidden"); // this will hide the modal again
+    });
+
     App.$.squares.forEach((square) => {
       square.addEventListener("click", (event) => {
         // Check if there's already a play, if so, return early:
@@ -113,13 +121,14 @@ const App = {
           // if the game is complete we gotta open the modal
           App.$.modal.classList.remove("hidden"); // this could also work: .toggle('hidden');
 
+          // print to the modal who has win the game:
+          let message = "";
           if (game.winner) {
-            // print to the modal who has win the game:
-
-            alert(`Player ${game.winner} wins!`);
+            message = `Player ${game.winner} wins!`;
           } else {
-            alert("Tie!");
+            message = "Tie game!";
           }
+          App.$.modalText.textContent = message;
         }
       });
     });
