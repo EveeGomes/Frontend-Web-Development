@@ -6,9 +6,9 @@ const App = {
     resetBtn: document.querySelector('[data-id="reset-btn"]'),
     newRoundBtn: document.querySelector('[data-id="new-round-btn"]'),
     squares: document.querySelectorAll('[data-id="square"]'),
-    modal: document.querySelectorAll('[data-id="modal"]'),
-    modalText: document.querySelectorAll('[data-id="modal-text"]'),
-    modalBtn: document.querySelectorAll('[data-id="modal-btn"]'),
+    modal: document.querySelector('[data-id="modal"]'),
+    modalText: document.querySelector('[data-id="modal-text"]'),
+    modalBtn: document.querySelector('[data-id="modal-btn"]'),
   },
 
   state: {
@@ -110,7 +110,12 @@ const App = {
         const game = App.getGameStatus(App.state.moves);
 
         if (game.status === "complete") {
+          // if the game is complete we gotta open the modal
+          App.$.modal.classList.remove("hidden"); // this could also work: .toggle('hidden');
+
           if (game.winner) {
+            // print to the modal who has win the game:
+
             alert(`Player ${game.winner} wins!`);
           } else {
             alert("Tie!");
