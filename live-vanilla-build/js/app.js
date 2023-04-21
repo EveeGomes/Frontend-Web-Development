@@ -104,7 +104,16 @@ const App = {
         square.replaceChildren(icon);
 
         // Check if there's a winner or tie game
-        const status = App.getGameStatus(App.state.moves);
+        const game = App.getGameStatus(App.state.moves); // this function receives the moves array (which is the App.state.moves) and returns an object with status and winner properties
+
+        // Now check the game status
+        if (game.status === "complete") {
+          if (game.winner) {
+            alert(`Player ${game.winner} wins!`);
+          } else {
+            alert("Tie!");
+          }
+        }
       });
     });
   },
