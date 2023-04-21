@@ -69,10 +69,9 @@ const App = {
 
     // Add event listener to the modal's button
     App.$.modalBtn.addEventListener("click", (event) => {
-      App.state.moves = []; // setting moves array to be empty we're resetting the game; NOTE: this right here doesn't change the UI! So the squares still have the icons from the last game.
-      // here we'll empty the squares:
+      App.state.moves = [];
       App.$.squares.forEach((square) => square.replaceChildren());
-      App.$.modal.classList.add("hidden"); // this will hide the modal again
+      App.$.modal.classList.add("hidden");
     });
 
     App.$.squares.forEach((square) => {
@@ -118,10 +117,8 @@ const App = {
         const game = App.getGameStatus(App.state.moves);
 
         if (game.status === "complete") {
-          // if the game is complete we gotta open the modal
-          App.$.modal.classList.remove("hidden"); // this could also work: .toggle('hidden');
+          App.$.modal.classList.remove("hidden");
 
-          // print to the modal who has win the game:
           let message = "";
           if (game.winner) {
             message = `Player ${game.winner} wins!`;
