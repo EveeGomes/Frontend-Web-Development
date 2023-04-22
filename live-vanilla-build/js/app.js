@@ -9,6 +9,7 @@ const App = {
     modal: document.querySelector('[data-id="modal"]'),
     modalText: document.querySelector('[data-id="modal-text"]'),
     modalBtn: document.querySelector('[data-id="modal-btn"]'),
+    turn: document.querySelector('[data-id="turn"]'),
   },
 
   state: {
@@ -74,6 +75,7 @@ const App = {
       App.$.modal.classList.add("hidden");
     });
 
+    // Event listener for each square
     App.$.squares.forEach((square) => {
       square.addEventListener("click", (event) => {
         // Check if there's already a play, if so, return early:
