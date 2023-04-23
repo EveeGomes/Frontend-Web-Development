@@ -107,13 +107,17 @@ const App = {
         const turnLabel = document.createElement("p");
         turnLabel.innerText = `Player ${nextPlayer}, you are up!`;
 
-        // Determine which player icon to add to the square
+        // Determine which player icon to add to the square and which icon to add to the turn indicator
         if (currentPlayer === 1) {
           squareIcon.classList.add("fa-solid", "fa-x", "yellow");
           turnIcon.classList.add("fa-solid", "fa-o", "turquoise");
+          // need to set the color of the turn indicator text to the same color as the player who's next
+          turnLabel.classList = "turquoise";
         } else {
           squareIcon.classList.add("fa-solid", "fa-o", "turquoise");
           turnIcon.classList.add("fa-solid", "fa-x", "yellow");
+          // same here for the text to change the color accordingly
+          turnLabel.classList = "yellow";
         }
 
         App.$.turn.replaceChildren(turnIcon, turnLabel);
