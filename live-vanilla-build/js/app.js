@@ -102,8 +102,8 @@ const App = {
         const nextPlayer = getOppositePlayer(currentPlayer);
 
         const squareIcon = document.createElement("i");
-        // create another icon since we need to add icons in two different places (squares and turn indicator)
         const turnIcon = document.createElement("i");
+
         const turnLabel = document.createElement("p");
         turnLabel.innerText = `Player ${nextPlayer}, you are up!`;
 
@@ -111,12 +111,10 @@ const App = {
         if (currentPlayer === 1) {
           squareIcon.classList.add("fa-solid", "fa-x", "yellow");
           turnIcon.classList.add("fa-solid", "fa-o", "turquoise");
-          // need to set the color of the turn indicator text to the same color as the player who's next
           turnLabel.classList = "turquoise";
         } else {
           squareIcon.classList.add("fa-solid", "fa-o", "turquoise");
           turnIcon.classList.add("fa-solid", "fa-x", "yellow");
-          // same here for the text to change the color accordingly
           turnLabel.classList = "yellow";
         }
 
