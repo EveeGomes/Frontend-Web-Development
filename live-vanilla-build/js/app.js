@@ -94,18 +94,28 @@ const App = {
         // Find the who's the current player
         const lastMove = App.state.moves.at(-1);
         const getOppositePlayer = (playerId) => (playerId === 1 ? 2 : 1);
+        // The currentPlayer represents who's clicking right now
         const currentPlayer =
           App.state.moves.length === 0
             ? 1
             : getOppositePlayer(lastMove.playerId);
 
-        // Determine which player icon to add to the square
+        // the next player is the one we want to change the turn indicator for
+        const nextPlayer = getOppositePlayer(currentPlayer);
+
         const icon = document.createElement("i");
+
+        const turnLabel = document.createElement("p");
+        turnLabel.innerText = `Player ${nextPlayer}, you are up!`;
+
+        // Determine which player icon to add to the square
         if (currentPlayer === 1) {
           icon.classList.add("fa-solid", "fa-x", "yellow");
         } else {
           icon.classList.add("fa-solid", "fa-o", "turquoise");
         }
+
+        App.$.turn.replaceChildren(icon, turnLabel);
 
         // Updating the moves state (updating the array of moves!)
         App.state.moves.push({
