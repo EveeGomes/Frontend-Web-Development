@@ -148,3 +148,14 @@ const App = {
 };
 
 window.addEventListener("load", App.init);
+
+function init() {
+  // all we're going to do here is initialize the class
+  const view = new View();
+
+  // testing if everything was initialized correctly:
+  console.log(view.$.turn);
+  // since we can see the div in the console, it means the view instance was successfully initialized above
+}
+
+window.addEventListener("load", init);
