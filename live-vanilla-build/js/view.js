@@ -1,5 +1,3 @@
-// we need to export things from here so the import in app.js can work:
-// the default keyword prevents us to use {} in the class' name while importing the class (in this case in the app.js -> import { View } from "./view.js";)
 export default class View {
   // properties
   $ = {};
@@ -18,3 +16,8 @@ export default class View {
     this.$.turn = document.querySelector('[data-id="turn"]');
   }
 }
+
+// because of strict mode, View isn't in global scope because we haven't attached it to the window (so for ex. if we try to type View in the console, it'll say it's not defined)
+// an optional thing to do (for it to become defined), is by explicitly attaching it to the window
+
+window.View = View;
