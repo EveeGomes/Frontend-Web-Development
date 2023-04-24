@@ -15,9 +15,21 @@ export default class View {
     this.$.modalBt = document.querySelector('[data-id="modal-btn"]');
     this.$.turn = document.querySelector('[data-id="turn"]');
   }
+
+  // bring the event listeners from app.js here, and make them as methods of the view class (~3h:17min)
+  // new pattern added: rather than handling the event listeners within the view, we want to do that in the controller
+  // that's because the controller is going to read the current state of the application and based on that state it may have to do different things to the view
+  // so it's better not to leave these events all to the view itself
+
+  bindGameResetEvent(handler) {
+    // handler is a callback function passed as argument to each of these event listeners
+    this.$.resetBtn.addEventListener("click", handler);
+    // so, instead of doing ...addEventListener('click', event => {...}), we're passing handler
+  }
+
+  bindNewRoundEvent(handler) {
+    this.$.newRoundBtn.addEventListener("click", handler);
+  }
+
+  bindPlayerMoveEvent(handle) {}
 }
-
-// because of strict mode, View isn't in global scope because we haven't attached it to the window (so for ex. if we try to type View in the console, it'll say it's not defined)
-// an optional thing to do (for it to become defined), is by explicitly attaching it to the window
-
-window.View = View;

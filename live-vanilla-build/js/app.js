@@ -161,4 +161,3 @@ function init() {
 }
 
 window.addEventListener("load", init);
-// ~3h:14min -> starts talking about strict mode in js and how it affects global kind of functions/variables
