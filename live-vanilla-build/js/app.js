@@ -1,6 +1,6 @@
 import View from "./view.js";
 
-// const App = {
+/*const App = {
 //   // Selectors:
 //   $: {
 //     menu: document.querySelector('[data-id="menu"]'),
@@ -150,9 +150,27 @@ import View from "./view.js";
 // };
 //
 //window.addEventListener("load", App.init);
+*/
 
+// Here's where the controller is taking place
 function init() {
   const view = new View();
+
+  // call methods from the View class
+  view.bindGameResetEvent((event) => {
+    console.log("Reset event");
+    console.log(event);
+  });
+
+  view.bindNewRoundEvent((event) => {
+    console.log("New round event");
+    console.log(event);
+  });
+
+  view.bindPlayerMoveEvent((event) => {
+    console.log("Player move event");
+    console.log(event);
+  });
 
   console.log(view.$.turn);
 }
