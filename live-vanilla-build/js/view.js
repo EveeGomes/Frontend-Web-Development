@@ -3,9 +3,8 @@ export default class View {
   $ = {};
 
   constructor() {
-    // this keyword means we're referencing the class' instance itself
-    // and in this class we've defined a property named $ (it could be any other name, the $ is just used because is short...)
     this.$.menu = document.querySelector('[data-id="menu"]');
+    this.$.menuBtn = document.querySelector('[data-id="menu-btn"]');
     this.$.menuItems = document.querySelector('[data-id="menu-items"]');
     this.$.resetBtn = document.querySelector('[data-id="reset-btn"]');
     this.$.newRoundBtn = document.querySelector('[data-id="new-round-btn"]');
@@ -14,6 +13,13 @@ export default class View {
     this.$.modalText = document.querySelector('[data-id="modal-text"]');
     this.$.modalBt = document.querySelector('[data-id="modal-btn"]');
     this.$.turn = document.querySelector('[data-id="turn"]');
+
+    // since this doesn't affect the state of the game and is all about the UI, these will be added to the constructor
+
+    // UI-only event listeners:
+    this.$.menuBtn.addEventListener("click", (event) => {
+      this.$.menuItems.classList.toggle("hidden");
+    });
   }
 
   // bring the event listeners from app.js here, and make them as methods of the view class (~3h:17min)
@@ -31,5 +37,9 @@ export default class View {
     this.$.newRoundBtn.addEventListener("click", handler);
   }
 
-  bindPlayerMoveEvent(handle) {}
+  bindPlayerMoveEvent(handler) {
+    this.$.squares.forEach((square) => {
+      square.addEventListener("click", handler);
+    });
+  }
 }

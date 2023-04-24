@@ -23,7 +23,7 @@
 
         <!-- Dropdown menu -->
         <div class="menu" data-id="menu">
-          <button class="menu-btn">
+          <button class="menu-btn" data-id="menu-btn">
             Actions
             <i class="fa-solid fa-chevron-down"></i>
           </button>
@@ -76,7 +76,6 @@
     </footer>
 
     <!-- Modal that opens when game ends -->
-    <!-- adding data-id so we can have a selector to work with in the app.js -->
     <div class="modal hidden" data-id="modal">
       <div class="modal-contents">
         <p data-id="modal-text">Player 1 wins!</p>
@@ -84,7 +83,6 @@
       </div>
     </div>
 
-    <!-- Instead of adding view script, we're going to add an attribute to the script element called module. This is a ES6 syntax that helps handling imports and exports -->
     <script src="js/app.js" type="module"></script>
   </body>
 </html>
