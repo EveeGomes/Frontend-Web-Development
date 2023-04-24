@@ -1,4 +1,6 @@
-class View {
+// we need to export things from here so the import in app.js can work:
+// the default keyword prevents us to use {} in the class' name while importing the class (in this case in the app.js -> import { View } from "./view.js";)
+export default class View {
   // properties
   $ = {};
 

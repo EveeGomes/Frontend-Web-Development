@@ -1,3 +1,6 @@
+// instead of just referencing the View class variable (in the global init function), we're going to import that
+import View from "./view.js";
+
 const App = {
   // Selectors:
   $: {
@@ -155,7 +158,6 @@ function init() {
 
   // testing if everything was initialized correctly:
   console.log(view.$.turn);
-  // since we can see the div in the console, it means the view instance was successfully initialized above
 }
 
 window.addEventListener("load", init);
