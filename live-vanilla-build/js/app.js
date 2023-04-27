@@ -168,8 +168,7 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((event) => {
-    console.log("Player move event");
-    console.log(event);
+    view.setTurnIndicator(2); // hardcode the player for now by setting it to be 1 (or 2 for testing player 2 icon/color); for now we're not tracking any state
   });
 }
 

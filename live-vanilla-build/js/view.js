@@ -53,14 +53,16 @@ export default class View {
   }
 
   // Assuming that player = 1 | 2
-  #setTurnIndicator(player) {
+  setTurnIndicator(player) {
+    // make it public so we can add to the controller (app.js module)
     const icon = document.createElement("i");
     const label = document.createElement("p");
 
-    this.$.turn.classList.add(player === 1 ? "yellow" : "turquoise");
-    this.$.turn.classList.remove(player === 1 ? "turquoise" : "yellow");
+    this.$.turn.classList.add(player === 1 ? "turquoise" : "yellow"); // "yellow" : "turquoise"
+    this.$.turn.classList.remove(player === 1 ? "yellow" : "turquoise"); // "turquoise" : "yellow"
 
-    icon.classList.add(player === 1 ? "fa-x" : "fa-o"); // so player 1 is associated with x and 2 with o
+    // adding "fa-solid" as another argument to be passed and added as a class
+    icon.classList.add("fa-solid", player === 1 ? "fa-x" : "fa-o"); // so player 1 is associated with x and 2 with o
 
     label.innerText =
       player === 1 ? "Player 1, you are up!" : "Player 2, you are up!";
