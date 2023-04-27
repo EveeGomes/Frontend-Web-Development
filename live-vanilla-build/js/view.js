@@ -49,9 +49,11 @@ export default class View {
     icon.classList.toggle("fa-chevron-left");
   }
 
-  // adding another method (utility method) to decrease the amount of querySelectors in the constuctor (check video: ~3h33min)
-  #qs(selector) {
-    const el = document.querySelector(selector);
+  // update this method to make it accept a parent element as well
+  #qs(selector, parent) {
+    const el = parent
+      ? parent.querySelector(selector)
+      : document.querySelector(selector); // if there's a parent we search for it, otherwise we search the document
     if (!el) throw new Error("Could not find elements");
 
     return el;
