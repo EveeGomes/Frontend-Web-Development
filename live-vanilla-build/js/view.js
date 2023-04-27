@@ -52,6 +52,23 @@ export default class View {
     icon.classList.toggle("fa-chevron-left");
   }
 
+  // Assuming that player = 1 | 2
+  #setTurnIndicator(player) {
+    const icon = document.createElement("i");
+    const label = document.createElement("p");
+
+    this.$.turn.classList.add(player === 1 ? "yellow" : "turquoise");
+    this.$.turn.classList.remove(player === 1 ? "turquoise" : "yellow");
+
+    icon.classList.add(player === 1 ? "fa-x" : "fa-o"); // so player 1 is associated with x and 2 with o
+
+    label.innerText =
+      player === 1 ? "Player 1, you are up!" : "Player 2, you are up!";
+
+    // These above are created in the memory, but they won't do anything... we need now to add them (commit) to the DOM
+    this.$.turn.replaceChildren(icon, label);
+  }
+
   #qs(selector, parent) {
     const el = parent
       ? parent.querySelector(selector)
