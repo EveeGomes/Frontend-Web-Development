@@ -52,22 +52,28 @@ export default class View {
     icon.classList.toggle("fa-chevron-left");
   }
 
-  // Assuming that player = 1 | 2
+  handlePlayerMove(squareEl, player) {
+    // args: the square element that was clicked and the player that made the move so that we know which icon to put in the square
+    const icon = document.createElement("i");
+    icon.classList.add(
+      "fa-solid",
+      player === 1 ? "fa-x turquoise" : "fa-o yellow"
+    );
+    squareEl.replaceChildren(icon);
+  }
+
   setTurnIndicator(player) {
-    // make it public so we can add to the controller (app.js module)
     const icon = document.createElement("i");
     const label = document.createElement("p");
 
     this.$.turn.classList.add(player === 1 ? "turquoise" : "yellow"); // "yellow" : "turquoise"
     this.$.turn.classList.remove(player === 1 ? "yellow" : "turquoise"); // "turquoise" : "yellow"
 
-    // adding "fa-solid" as another argument to be passed and added as a class
-    icon.classList.add("fa-solid", player === 1 ? "fa-x" : "fa-o"); // so player 1 is associated with x and 2 with o
+    icon.classList.add("fa-solid", player === 1 ? "fa-x" : "fa-o");
 
     label.innerText =
       player === 1 ? "Player 1, you are up!" : "Player 2, you are up!";
 
-    // These above are created in the memory, but they won't do anything... we need now to add them (commit) to the DOM
     this.$.turn.replaceChildren(icon, label);
   }
 
