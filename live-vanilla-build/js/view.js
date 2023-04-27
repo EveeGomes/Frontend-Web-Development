@@ -7,7 +7,7 @@ export default class View {
     this.$.menuItems = this.#qs('[data-id="menu-items"]');
     this.$.resetBtn = this.#qs('[data-id="reset-btn"]');
     this.$.newRoundBtn = this.#qs('[data-id="new-round-btn"]');
-    this.$.squares = document.querySelectorAll('[data-id="square"]');
+    this.$.squares = this.#qsAll('[data-id="square"]');
     this.$.modal = this.#qs('[data-id="modal"]');
     this.$.modalText = this.#qs('[data-id="modal-text"]');
     this.$.modalBt = this.#qs('[data-id="modal-btn"]');
@@ -49,13 +49,19 @@ export default class View {
     icon.classList.toggle("fa-chevron-left");
   }
 
-  // update this method to make it accept a parent element as well
   #qs(selector, parent) {
     const el = parent
       ? parent.querySelector(selector)
-      : document.querySelector(selector); // if there's a parent we search for it, otherwise we search the document
+      : document.querySelector(selector);
     if (!el) throw new Error("Could not find elements");
 
     return el;
+  }
+
+  #qsAll(selector) {
+    const elList = document.querySelectorAll(selector); // now we use a different DOM method (querySelectorAll)
+    if (!elList) throw new Error("Could not find elements");
+
+    return elList;
   }
 }
