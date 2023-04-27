@@ -168,7 +168,9 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((event) => {
-    view.setTurnIndicator(2); // hardcode the player for now by setting it to be 1 (or 2 for testing player 2 icon/color); for now we're not tracking any state
+    view.setTurnIndicator(2);
+    // add to the controller since the controller is responsible for orchestrating the events that take place
+    view.handlePlayerMove(event.target, 1); // event.target will represent the square that has been clicked
   });
 }
 

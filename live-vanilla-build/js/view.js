@@ -57,7 +57,8 @@ export default class View {
     const icon = document.createElement("i");
     icon.classList.add(
       "fa-solid",
-      player === 1 ? "fa-x turquoise" : "fa-o yellow"
+      player === 1 ? "fa-x" : "fa-o",
+      player === 1 ? "turquoise" : "yellow" // .add can't accept whitespace
     );
     squareEl.replaceChildren(icon);
   }
