@@ -43,5 +43,9 @@ export default class View {
    */
   toggleMenu() {
     this.$.menuItems.classList.toggle("hidden");
+    // add a border when the menu is selected (this could be achieved using css as well, but here's a nice demonstration on how to do it with JS)
+    this.$.menuBtn.classList.toggle("border");
+
+    // flip the icon up and down according to the open/close state
   }
 }
