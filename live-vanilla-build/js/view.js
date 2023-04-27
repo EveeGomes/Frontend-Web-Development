@@ -1,6 +1,6 @@
 export default class View {
   $ = {};
-  $$ = {}; // this namespace will represent the ones that are nodelist
+  $$ = {};
 
   constructor() {
     this.$.menu = this.#qs('[data-id="menu"]');
@@ -13,7 +13,6 @@ export default class View {
     this.$.modalBt = this.#qs('[data-id="modal-btn"]');
     this.$.turn = this.#qs('[data-id="turn"]');
 
-    // change the namespace for squares because it represents a nodelist, while the others just represent individual elements
     this.$$.squares = this.#qsAll('[data-id="square"]');
 
     // UI-only event listeners:
@@ -53,12 +52,11 @@ export default class View {
   }
 
   handlePlayerMove(squareEl, player) {
-    // args: the square element that was clicked and the player that made the move so that we know which icon to put in the square
     const icon = document.createElement("i");
     icon.classList.add(
       "fa-solid",
       player === 1 ? "fa-x" : "fa-o",
-      player === 1 ? "turquoise" : "yellow" // .add can't accept whitespace
+      player === 1 ? "turquoise" : "yellow"
     );
     squareEl.replaceChildren(icon);
   }
@@ -67,8 +65,8 @@ export default class View {
     const icon = document.createElement("i");
     const label = document.createElement("p");
 
-    this.$.turn.classList.add(player === 1 ? "turquoise" : "yellow"); // "yellow" : "turquoise"
-    this.$.turn.classList.remove(player === 1 ? "yellow" : "turquoise"); // "turquoise" : "yellow"
+    this.$.turn.classList.add(player === 1 ? "turquoise" : "yellow");
+    this.$.turn.classList.remove(player === 1 ? "yellow" : "turquoise");
 
     icon.classList.add("fa-solid", player === 1 ? "fa-x" : "fa-o");
 
@@ -88,7 +86,7 @@ export default class View {
   }
 
   #qsAll(selector) {
-    const elList = document.querySelectorAll(selector); // now we use a different DOM method (querySelectorAll)
+    const elList = document.querySelectorAll(selector);
     if (!elList) throw new Error("Could not find elements");
 
     return elList;
