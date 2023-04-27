@@ -169,8 +169,7 @@ function init() {
 
   view.bindPlayerMoveEvent((event) => {
     view.setTurnIndicator(2);
-    // add to the controller since the controller is responsible for orchestrating the events that take place
-    view.handlePlayerMove(event.target, 1); // event.target will represent the square that has been clicked
+    view.handlePlayerMove(event.target, 1);
   });
 }
 
