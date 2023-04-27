@@ -2,8 +2,6 @@ export default class View {
   $ = {};
 
   constructor() {
-    // ctrl + D: to use multi word edit of same words in Windows and Linux.
-    // ctrl + f: to use replace
     this.$.menu = this.qs('[data-id="menu"]');
     this.$.menuBtn = this.qs('[data-id="menu-btn"]');
     this.$.menuItems = this.qs('[data-id="menu-items"]');
@@ -52,7 +50,7 @@ export default class View {
   }
 
   // adding another method (utility method) to decrease the amount of querySelectors in the constuctor (check video: ~3h33min)
-  qs(selector) {
+  #qs(selector) {
     const el = document.querySelector(selector);
     if (!el) throw new Error("Could not find elements");
 
