@@ -47,5 +47,10 @@ export default class View {
     this.$.menuBtn.classList.toggle("border");
 
     // flip the icon up and down according to the open/close state
+    // so we create a different icon to be added based on the state
+    const icon = this.$.menuBtn.querySelector("i"); // we look for an icon element
+    // then since we're using font awesome we can choose between these two:
+    icon.classList.toggle("fa-chevron-down");
+    icon.classList.toggle("fa-chevron-left"); // in the video tutorial he uses "up"
   }
 }
