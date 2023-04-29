@@ -1,11 +1,15 @@
 export default class Store {
+  // add a private variable (property) that'll be an array of moves
+  #state = { moves: [] };
+
   contructor() {}
 
-  #getState() {}
+  #getState() {
+    // use the no-mutate-state approach from redux best practice website/documentation
+    return this.#state;
+  }
 
-  #saveState() {}
-
-  // some documentations about state management:
-  // - redux (check best practice in their website);
-  // nowadays React is the most used one!
+  #saveState(newState) {
+    this.#state = newState;
+  }
 }
