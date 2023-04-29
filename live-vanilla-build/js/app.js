@@ -1,4 +1,5 @@
 import View from "./view.js";
+import Store from "./store.js";
 
 const App = {
   // Selectors:
@@ -155,6 +156,8 @@ const App = {
 // Here's where the controller is taking place
 function init() {
   const view = new View();
+  // initializing store:
+  const store = new Store();
 
   // call methods from the View class
   view.bindGameResetEvent((event) => {
