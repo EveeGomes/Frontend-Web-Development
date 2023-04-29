@@ -153,10 +153,25 @@ const App = {
 // Leaving the following commented out will avoid the code above to be run
 //window.addEventListener("load", App.init);
 
-// Here's where the controller is taking place
+// defining the players as an array variable:
+// in other worlds we're adding some configurations
+const players = [
+  {
+    id: 1,
+    name: "Player 1",
+    iconClass: "fa-x",
+    colorClass: "turquoise",
+  },
+  {
+    id: 2,
+    name: "Player 2",
+    iconClass: "fa-o",
+    colorClass: "yellow",
+  },
+];
+
 function init() {
   const view = new View();
-  // initializing store:
   const store = new Store();
 
   // call methods from the View class
