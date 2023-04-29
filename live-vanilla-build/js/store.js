@@ -1,5 +1,10 @@
+// default value passed to Store
+const initialValue = {
+  moves: [],
+};
+
 export default class Store {
-  #state = { moves: [] };
+  #state = initialValue; // refactoring
 
   contructor() {}
 
@@ -8,14 +13,10 @@ export default class Store {
   }
 
   #saveState(stateOrFn) {
-    // rather than passing a hardcoding object, we can pass an arg that can be a state/object or function
-    // in this case we can pass either a raw object or a callback function (~4h:00)
-
     const prevState = this.#getState();
 
     let newState;
 
-    // check what type of argument we're dealing with:
     switch (typeof stateOrFn) {
       case "function":
         newState = stateOrFn(prevState);
