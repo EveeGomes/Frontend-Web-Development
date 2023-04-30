@@ -170,9 +170,8 @@ const players = [
 
 function init() {
   const view = new View();
-  const store = new Store(players); // since we have the players array defined above, we can pass it here
+  const store = new Store(players);
 
-  // call methods from the View class
   view.bindGameResetEvent((event) => {
     console.log("Reset event");
     console.log(event);
@@ -184,8 +183,14 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((event) => {
+    // reversing the order of these methods because first we need to handle the player move
+    const clickedSquare = event.target;
+    view.handlePlayerMove(clickedSquare, state.game.currentPlayer);
+
+    // update the state to the next player since we've just made a move by the player above (4h:20min)
+    // therefore we go to store and make a public method
+
     view.setTurnIndicator(players[1]);
-    view.handlePlayerMove(event.target, players[1]);
   });
 }
 

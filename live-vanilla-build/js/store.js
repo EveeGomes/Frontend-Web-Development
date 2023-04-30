@@ -23,6 +23,15 @@ export default class Store {
     };
   }
 
+  // public method to updtate the state
+  playerMove(squareId) {
+    // to follow the convention of not updating the state directly
+    const state = this.#getState();
+
+    // make a clone using a build in method of browsers
+    const stateClone = structuredClone(state); // this way stateClone is a completely different/distinct object from state defined before!
+  }
+
   #getState() {
     return this.#state;
   }
