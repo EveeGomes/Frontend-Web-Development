@@ -153,8 +153,6 @@ const App = {
 // Leaving the following commented out will avoid the code above to be run
 //window.addEventListener("load", App.init);
 
-// defining the players as an array variable:
-// in other worlds we're adding some configurations
 const players = [
   {
     id: 1,

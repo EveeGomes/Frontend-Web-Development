@@ -61,8 +61,6 @@ export default class View {
     squareEl.replaceChildren(icon);
   }
 
-  // refactoring this method since we now have in app.js (the controller) an array that represents the players
-  // also in the html file we remove the color from the div class and add it to the icon and paragraph; then we just take care of everything else in this method
   setTurnIndicator(player) {
     const icon = document.createElement("i");
     const label = document.createElement("p");
