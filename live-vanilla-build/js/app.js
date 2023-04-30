@@ -184,8 +184,8 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((event) => {
-    view.setTurnIndicator(2);
-    view.handlePlayerMove(event.target, 1);
+    view.setTurnIndicator(players[1]);
+    view.handlePlayerMove(event.target, players[1]);
   });
 }
 
