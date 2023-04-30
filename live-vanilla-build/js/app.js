@@ -170,7 +170,7 @@ const players = [
 
 function init() {
   const view = new View();
-  const store = new Store();
+  const store = new Store(players); // since we have the players array defined above, we can pass it here
 
   // call methods from the View class
   view.bindGameResetEvent((event) => {
