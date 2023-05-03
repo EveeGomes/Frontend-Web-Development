@@ -14,6 +14,7 @@ export default class Store {
     const currentPlayer = this.players[state.moves.length % 2];
 
     return {
+      moves: state.moves, // added this in order for this getter to return the moves array too so we can work in the app.js module
       currentPlayer,
     };
   }

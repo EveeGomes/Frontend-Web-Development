@@ -182,12 +182,26 @@ function init() {
     console.log(event);
   });
 
-  view.bindPlayerMoveEvent((event) => {
-    const clickedSquare = event.target;
-    view.handlePlayerMove(clickedSquare, store.game.currentPlayer);
+  view.bindPlayerMoveEvent((square) => {
+    // because of the change in bindPlayerMoveEvent method, instead of passing the event we're now passing the square reference
 
-    store.playerMove(+clickedSquare.id);
+    // here we need to check whether there's an existing move on the clicked square. This is to avoid placing a move to a square that's already been clicked
+    const existingMove = store.game.moves.find(
+      (move) => move.squareId === +square.id
+    ); // .finf(predicate => boolean) returns the value of the first element in the array where the predicate is true and undefined otherwise
 
+    if (existingMove) {
+      // if it's true (instead of undefined)
+      return; // return early so the next methods won't happen!
+    }
+
+    // Place an icon of the current player in a square
+    view.handlePlayerMove(square, store.game.currentPlayer);
+
+    // Advance to the next state by pushing a move to the moves array
+    store.playerMove(+square.id);
+
+    // Set the next player's turn indicator
     view.setTurnIndicator(store.game.currentPlayer);
   });
 }
