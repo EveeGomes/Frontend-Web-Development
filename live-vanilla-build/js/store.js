@@ -13,23 +13,17 @@ export default class Store {
     this.players = players;
   }
 
-  // adding another getter which will give us the total number of wins by player
   get stats() {
-    // ~4h:53min
-    // derive states that can be used to update the score boards on the game!
-    // so, what we need this method to return is the stats of a player
     const state = this.#getState();
     return {
       playerWithStats: this.players.map((player) => {
-        // we calculate the wins by looking at the history. To do that we need to grab the state (that's why we have a const state declared before thsi return statement)
         const wins = state.history.currentRoundGames.filter(
           (game) => game.status.winner?.id === player.id
         ).length;
 
         return {
-          // from the map function we'll spread the player object using ...
           ...player,
-          wins, // and give the number of wins
+          wins,
         };
       }),
 

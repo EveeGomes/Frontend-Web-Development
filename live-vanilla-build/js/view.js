@@ -44,6 +44,8 @@ export default class View {
    * DOM helper methods
    */
 
+  updateScoreBoard() {}
+
   openModal(message) {
     this.$.modal.classList.remove("hidden");
     this.$.modalText.innerText = message;
