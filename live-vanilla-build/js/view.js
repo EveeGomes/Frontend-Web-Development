@@ -68,6 +68,19 @@ export default class View {
     });
   }
 
+  // this method will avoid cases where we have a number of moves in the game where the turn indicator has a player 2 turn and we reset the game but that turn remains for the player 2 instead of player 1
+  initializeMoves(moves) {
+    // pass a moves array of the current game moves
+    this.$$.squares.forEach((square) => {
+      // we need to check if there's any existing moves in state
+      const existingMove = moves.find((move) => move.squareId === +square.id);
+
+      if (existingMove) {
+        this.handlePlayerMove(square, existingMove.player);
+      }
+    });
+  }
+
   #closeModal() {
     this.$.modal.classList.add("hidden");
   }
