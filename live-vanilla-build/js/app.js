@@ -20,10 +20,12 @@ function init() {
   const view = new View();
   const store = new Store("live-t3-storage-key", players);
 
+  // Current tab state changes
   store.addEventListener("statechange", () => {
     view.render(store.game, store.stats);
   });
 
+  // A different tab state changes
   window.addEventListener("storage", () => {
     // to test:
     console.log("State changed from antoher tab");
@@ -31,7 +33,7 @@ function init() {
     view.render(store.game, store.stats);
   });
 
-  // Initialize the view on the first page load
+  // Initialize the view on the first load of the document
   view.render(store.game, store.stats);
 
   view.bindGameResetEvent((event) => {

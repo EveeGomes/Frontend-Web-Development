@@ -132,9 +132,6 @@ export default class Store extends EventTarget {
 
     window.localStorage.setItem(this.storageKey, JSON.stringify(newState));
 
-    // for the inheritance and logic implemented in app.js to work, we need to dispatch an event
-    // so since we've consolidated everything into this saveState method, this is the only place where state is being updated
     this.dispatchEvent(new Event("statechange"));
-    // so now when the state changes, we're dispatching this new event, and in the app.js where there's an event listener for this event, the event will be fired and then we'll render the view
   }
 }
