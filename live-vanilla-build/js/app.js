@@ -180,8 +180,12 @@ function init() {
     view.clearMoves();
     view.setTurnIndicator(store.game.currentPlayer);
 
-    // call the new getter (stats) so we can test it
-    console.log(store.stats);
+    // call the updateScoreBoard method here so it can be shown in the scoreboards
+    view.updateScoreBoard(
+      store.stats.playerWithStats[0].wins,
+      store.stats.playerWithStats[1].wins,
+      store.stats.ties
+    );
   });
 
   view.bindNewRoundEvent((event) => {
