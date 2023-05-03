@@ -18,12 +18,11 @@ const players = [
 
 function init() {
   const view = new View();
-  const store = new Store("live-t3-storage-key", players); // pass the key to Store constructor. The name we give can be anything!
+  const store = new Store("live-t3-storage-key", players);
 
-  view.bindGameResetEvent((event) => {
+  // add a helper method to avoid repeating the same code
+  function initView() {
     view.closeAll();
-    store.reset();
-
     view.clearMoves();
     view.setTurnIndicator(store.game.currentPlayer);
 
@@ -32,19 +31,20 @@ function init() {
       store.stats.playerWithStats[1].wins,
       store.stats.ties
     );
+  }
+
+  // call initView method inside init() in order to load event to update the DOM with the latest state. So in the first load of the page, all the functionality in the initView should be there.
+  // this will also allow to the local storage work properly (so the user can see it working)
+  initView();
+
+  view.bindGameResetEvent((event) => {
+    store.reset();
+    initView();
   });
 
   view.bindNewRoundEvent((event) => {
     store.newRound();
-
-    view.closeAll();
-    view.clearMoves();
-    view.setTurnIndicator(store.game.currentPlayer);
-    view.updateScoreBoard(
-      store.stats.playerWithStats[0].wins,
-      store.stats.playerWithStats[1].wins,
-      store.stats.ties
-    );
+    initView();
   });
 
   view.bindPlayerMoveEvent((square) => {

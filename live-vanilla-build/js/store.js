@@ -8,7 +8,6 @@ const initialValue = {
 
 export default class Store {
   constructor(key, players) {
-    // ~5h:07min talking about local storage
     this.storageKey = key;
     this.players = players;
   }
@@ -130,8 +129,6 @@ export default class Store {
         throw new Error("Invalid argument passed to saveState");
     }
 
-    //this.#state = newState;
-    // replace the call above to:
-    window.localStorage.setItem(this.storageKey, JSON.stringify(newState)); // JSON.stringify() does the opposite to JSON.parse(): it'll convert a JS value to a JS Object Notation (JSON) string
+    window.localStorage.setItem(this.storageKey, JSON.stringify(newState));
   }
 }
