@@ -24,7 +24,6 @@ export default class View {
     });
   }
 
-  // render method! The name given here is just a convention :)
   render(game, stats) {
     const { playerWithStats, ties } = stats;
     const {
@@ -33,7 +32,6 @@ export default class View {
       status: { isComplete, winner },
     } = game;
 
-    // add the functionality we had in initView()
     this.#closeAll();
     this.#clearMoves();
     this.#updateScoreBoard(
@@ -44,9 +42,7 @@ export default class View {
     this.#initializeMoves(moves);
 
     if (isComplete) {
-      this.#openModal(
-        winner ? `${store.game.status.winner.name} wins!` : "Tie!"
-      );
+      this.#openModal(winner ? `${winner.name} wins!` : "Tie!");
       return;
     }
 
@@ -56,7 +52,6 @@ export default class View {
   /**
    * Register all the event listeners
    */
-  // These remain public so they can be called in the app module (the controller)
   bindGameResetEvent(handler) {
     this.$.resetBtn.addEventListener("click", handler);
     this.$.modalBtn.addEventListener("click", handler);
@@ -75,8 +70,6 @@ export default class View {
   /**
    * DOM helper methods
    */
-  // make them all private because they're all gonna be called from within the rendering method.
-  // these are all internal implementation details of our view, therefore no one needs to know about this except the view module!
   #updateScoreBoard(p1Wins, p2Wins, ties) {
     this.$.p1Wins.innerText = `${p1Wins} wins`;
     this.$.p2Wins.innerText = `${p2Wins} wins`;
@@ -104,7 +97,7 @@ export default class View {
       const existingMove = moves.find((move) => move.squareId === +square.id);
 
       if (existingMove) {
-        this.handlePlayerMove(square, existingMove.player);
+        this.#handlePlayerMove(square, existingMove.player);
       }
     });
   }

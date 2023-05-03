@@ -20,20 +20,6 @@ function init() {
   const view = new View();
   const store = new Store("live-t3-storage-key", players);
 
-  // add a helper method to avoid repeating the same code
-  // function initView() {
-  //   view.closeAll();
-  //   view.clearMoves();
-  //   view.setTurnIndicator(store.game.currentPlayer);
-
-  //   view.updateScoreBoard(
-  //     store.stats.playerWithStats[0].wins,
-  //     store.stats.playerWithStats[1].wins,
-  //     store.stats.ties
-  //   );
-  //   view.initializeMoves(store.game.moves);
-  // }
-
   window.addEventListener("storage", () => {
     // to test:
     console.log("State changed from antoher tab");
@@ -54,7 +40,7 @@ function init() {
     view.render(store.game, store.stats);
   });
 
-  // Now this method is checking state and updating it
+  // Check state and update it
   view.bindPlayerMoveEvent((square) => {
     const existingMove = store.game.moves.find(
       (move) => move.squareId === +square.id
@@ -67,7 +53,6 @@ function init() {
     // Advance to the next state by pushing a move to the moves array
     store.playerMove(+square.id);
 
-    // so once the state is updated with the method above, we can render the view with the new state we have retrieved
     view.render(store.game, store.stats);
   });
 }
