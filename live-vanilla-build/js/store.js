@@ -7,12 +7,8 @@ const initialValue = {
 };
 
 export default class Store extends EventTarget {
-  // we add this so Store inherits EventTarget functionalities
   constructor(key, players) {
-    // add the keyword super that'll allow the inheritence from EventTarget
     super();
-    // now once we add inheritance, we can now use the methods from EventTarget (such as addEventListener method)
-
     this.storageKey = key;
     this.players = players;
   }
