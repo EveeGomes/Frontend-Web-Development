@@ -68,11 +68,8 @@ export default class View {
     });
   }
 
-  // this method will avoid cases where we have a number of moves in the game and when we refresh the page the content is destroyed. In this case we need this method to reconstruct the moves that have been made on the gameboard on the initialization of the page
   initializeMoves(moves) {
-    // pass a moves array of the current game moves
     this.$$.squares.forEach((square) => {
-      // we need to check if there's any existing moves in state
       const existingMove = moves.find((move) => move.squareId === +square.id);
 
       if (existingMove) {

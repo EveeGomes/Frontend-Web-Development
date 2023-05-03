@@ -31,11 +31,7 @@ function init() {
       store.stats.playerWithStats[1].wins,
       store.stats.ties
     );
-    // we add this method here so this will be used in initView call and the reset and new round methods too (which for these two this call will be an empty one since it won't find any elements)
     view.initializeMoves(store.game.moves);
-
-    // now with this implemented, if we have moves in the game and we refresh the page, the state will persist! Only when we reset or make a new round is that the board will be cleared!
-    // CHECK FROM 5H:15MIN
   }
 
   initView();
