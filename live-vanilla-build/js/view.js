@@ -160,7 +160,6 @@ export default class View {
     return elList;
   }
 
-  // 5h:47min
   #delegate(el, selector, eventKey, handler) {
     el.addEventListener(eventKey, (event) => {
       if (event.target.matches(selector)) {
