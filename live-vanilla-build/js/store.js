@@ -110,12 +110,8 @@ export default class Store {
   }
 
   #getState() {
-    // now, instead of saving in local memory using local variables, we'll use the local storage to save everything
-    //return this.#state;
-
-    const item = window.localStorage.getItem(this.storageKey); // this will either return undefined or the string representation of the storageKey value!
-
-    return item ? JSON.parse(item) : initialValue; // we parse because it's a string, or we return the initialValue which is a JS object. In other words we'll return the same type, an object!
+    const item = window.localStorage.getItem(this.storageKey);
+    return item ? JSON.parse(item) : initialValue;
   }
 
   #saveState(stateOrFn) {
@@ -134,6 +130,8 @@ export default class Store {
         throw new Error("Invalid argument passed to saveState");
     }
 
-    this.#state = newState;
+    //this.#state = newState;
+    // replace the call above to:
+    window.localStorage.setItem(this.storageKey, JSON.stringify(newState)); // JSON.stringify() does the opposite to JSON.parse(): it'll convert a JS value to a JS Object Notation (JSON) string
   }
 }
