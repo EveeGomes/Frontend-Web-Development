@@ -5,18 +5,14 @@ const initialValue = {
 export default class Store {
   #state = initialValue;
 
-  contructor(players) {
+  constructor(players) {
     this.players = players;
   }
 
   get game() {
-    // get the current player (4h:15min)
     const state = this.#getState();
-
-    // using modulus operator to derive the current player:
     const currentPlayer = this.players[state.moves.length % 2];
 
-    // like this we return currentPlayer as part of an object
     return {
       currentPlayer,
     };
@@ -33,7 +29,7 @@ export default class Store {
       player: this.game.currentPlayer,
     });
 
-    this.#saveState(stateClone); // this will be refactored later
+    this.#saveState(stateClone); // this will be refactored later; now we're passing a literal object rather than a callback function
   }
 
   #getState() {
