@@ -7,9 +7,9 @@ const initialValue = {
 };
 
 export default class Store {
-  #state = initialValue;
-
-  constructor(players) {
+  constructor(key, players) {
+    // ~5h:07min talking about local storage
+    this.storageKey = key;
     this.players = players;
   }
 
@@ -110,7 +110,12 @@ export default class Store {
   }
 
   #getState() {
-    return this.#state;
+    // now, instead of saving in local memory using local variables, we'll use the local storage to save everything
+    //return this.#state;
+
+    const item = window.localStorage.getItem(this.storageKey); // this will either return undefined or the string representation of the storageKey value!
+
+    return item ? JSON.parse(item) : initialValue; // we parse because it's a string, or we return the initialValue which is a JS object. In other words we'll return the same type, an object!
   }
 
   #saveState(stateOrFn) {

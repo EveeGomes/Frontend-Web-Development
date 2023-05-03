@@ -18,7 +18,7 @@ const players = [
 
 function init() {
   const view = new View();
-  const store = new Store(players);
+  const store = new Store("live-t3-storage-key", players); // pass the key to Store constructor. The name we give can be anything!
 
   view.bindGameResetEvent((event) => {
     view.closeAll();
