@@ -180,7 +180,6 @@ function init() {
     view.clearMoves();
     view.setTurnIndicator(store.game.currentPlayer);
 
-    // call the updateScoreBoard method here so it can be shown in the scoreboards
     view.updateScoreBoard(
       store.stats.playerWithStats[0].wins,
       store.stats.playerWithStats[1].wins,
