@@ -54,9 +54,8 @@ export default class Store {
 
   // public method to updatate the state
   playerMove(squareId) {
-    const state = this.#getState();
-
-    const stateClone = structuredClone(state);
+    // refactoring
+    const stateClone = structuredClone(this.#getState());
 
     stateClone.moves.push({
       squareId,
@@ -70,8 +69,26 @@ export default class Store {
     return this.#state;
   }
 
+  // updating:
   reset() {
-    this.#saveState(initialValue);
+    // make a state clone too instead of working with it directly:
+    const stateClone = structuredClone(this.#getState());
+
+    // destructor? 4h:50min
+    const { status, moves } = this.game;
+
+    if (status.isComplete) {
+      // using the const above we can now use this instead of if(this.game.status.isComplete)
+      // push the game we're reseting to the history object! (this is a complete game!)
+      stateClone.history.currentRoundGames.push({
+        moves,
+        status,
+      });
+    }
+
+    stateClone.currentGameMoves = []; // reset the moves
+
+    this.#saveState(stateClone); // instead of initialValue
   }
 
   #saveState(stateOrFn) {
