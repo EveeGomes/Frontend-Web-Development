@@ -29,9 +29,8 @@ export default class Store {
     for (const player of this.players) {
       const selectedSquareIds = state.moves
         .filter((move) => move.player.id === player.id)
-        .map((move) => move.squareId); // 4h:30min
+        .map((move) => move.squareId);
 
-      // inner loop
       for (const pattern of winningPatterns) {
         if (pattern.every((v) => selectedSquareIds.includes(v))) {
           winner = player;

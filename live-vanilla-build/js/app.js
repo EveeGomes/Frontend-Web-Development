@@ -197,6 +197,17 @@ function init() {
     // Advance to the next state by pushing a move to the moves array
     store.playerMove(+square.id);
 
+    // check whether there's a winner before changing the turn indicator
+    if (store.game.status.isComplete) {
+      view.openModal(
+        store.game.status.winner
+          ? `${store.game.status.winner.name} wins!`
+          : "Tie!"
+      );
+
+      return; // add this return because if this code run, it means there's a winner so we no longer move further than this
+    }
+
     // Set the next player's turn indicator
     view.setTurnIndicator(store.game.currentPlayer);
   });
