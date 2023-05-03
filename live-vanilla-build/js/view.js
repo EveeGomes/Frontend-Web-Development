@@ -50,14 +50,31 @@ export default class View {
     this.$.modalText.innerText = message;
   }
 
-  closeModal() {
-    this.$.modal.classList.add("hidden");
+  closeAll() {
+    this.#closeModal();
+    this.#closeMenu();
   }
 
   clearMoves() {
     this.$$.squares.forEach((square) => {
       square.replaceChildren();
     });
+  }
+
+  // making both close methods as private ones since they're only being called in the closeAll method
+  #closeModal() {
+    this.$.modal.classList.add("hidden");
+  }
+
+  #closeMenu() {
+    this.$.menuItems.classList.add("hidden");
+    this.$.menuBtn.classList.remove("border");
+
+    // reselect the icon to be the one that's pointing down
+    const icon = this.$.menuBtn.querySelector("i");
+    // instead of toggle we'll have add and remove:
+    icon.classList.add("fa-chevron-down");
+    icon.classList.remove("fa-chevron-left");
   }
 
   #toggleMenu() {

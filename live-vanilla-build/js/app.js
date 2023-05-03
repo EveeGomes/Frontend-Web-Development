@@ -173,7 +173,7 @@ function init() {
   const store = new Store(players);
 
   view.bindGameResetEvent((event) => {
-    view.closeModal();
+    view.closeAll(); // refactoring
 
     store.reset();
 
