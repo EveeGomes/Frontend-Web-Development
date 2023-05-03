@@ -34,12 +34,10 @@ function init() {
     view.initializeMoves(store.game.moves);
   }
 
-  // add this event listener so that we can play the game in two tabs. So this event will be fired every time there's a change in state from another tab!
   window.addEventListener("storage", () => {
     // to test:
     console.log("State changed from antoher tab");
 
-    // so when that change in storage happens, we need to initialize the view again:
     initView();
   });
 
