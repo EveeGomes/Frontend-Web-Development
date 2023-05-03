@@ -184,10 +184,9 @@ function init() {
 
   view.bindPlayerMoveEvent((event) => {
     const clickedSquare = event.target;
-    view.handlePlayerMove(clickedSquare, store.game.currentPlayer); // this player is different from the next we use in view.setTurnIndicator!!! That's because we're changing the state by calling playerMove in the next line. So everytime we use the get game from store module, we're getting different values since it's reavaluating and updating (4h:22min)
+    view.handlePlayerMove(clickedSquare, store.game.currentPlayer);
 
-    // update the state to advanced to the next player
-    store.playerMove(+clickedSquare.id); // cast the clickedSquare id into a number using +
+    store.playerMove(+clickedSquare.id);
 
     view.setTurnIndicator(store.game.currentPlayer);
   });

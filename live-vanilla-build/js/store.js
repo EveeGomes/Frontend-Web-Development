@@ -18,7 +18,7 @@ export default class Store {
     };
   }
 
-  // public method to updtate the state
+  // public method to updatate the state
   playerMove(squareId) {
     const state = this.#getState();
 
@@ -29,7 +29,7 @@ export default class Store {
       player: this.game.currentPlayer,
     });
 
-    this.#saveState(stateClone); // this will be refactored later; now we're passing a literal object rather than a callback function
+    this.#saveState(stateClone);
   }
 
   #getState() {
