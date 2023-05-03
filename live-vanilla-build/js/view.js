@@ -36,8 +36,6 @@ export default class View {
     // add the functionality we had in initView()
     this.#closeAll();
     this.#clearMoves();
-    //this.#setTurnIndicator(currentPlayer); //this will go after checking if the game is complete bcz we won't need it to change if it's complete
-    // here we're rendering the scoreboard.
     this.#updateScoreBoard(
       playerWithStats[0].wins,
       playerWithStats[1].wins,

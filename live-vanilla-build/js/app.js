@@ -64,23 +64,7 @@ function init() {
     }
 
     // Advance to the next state by pushing a move to the moves array
-    store.playerMove(+square.id); // this is an important step which will will allow the render method to get the latest verstion of state and recreate the game with
-
-    // THIS method will be removed so that we implement this logic in the render method! <<<<<<<<<<<<<<
-    // check whether there's a winner before changing the turn indicator
-    if (store.game.status.isComplete) {
-      view.openModal(
-        store.game.status.winner
-          ? `${store.game.status.winner.name} wins!`
-          : "Tie!"
-      );
-
-      return;
-    }
-
-    // THIS method will be removed so that we implement this logic in the render method! <<<<<<<<<<<<<<
-    // Set the next player's turn indicator
-    view.setTurnIndicator(store.game.currentPlayer);
+    store.playerMove(+square.id);
   });
 }
 
