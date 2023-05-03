@@ -54,6 +54,7 @@ function init() {
     view.render(store.game, store.stats);
   });
 
+  // Now this method is checking state and updating it
   view.bindPlayerMoveEvent((square) => {
     const existingMove = store.game.moves.find(
       (move) => move.squareId === +square.id
@@ -65,6 +66,9 @@ function init() {
 
     // Advance to the next state by pushing a move to the moves array
     store.playerMove(+square.id);
+
+    // so once the state is updated with the method above, we can render the view with the new state we have retrieved
+    view.render(store.game, store.stats);
   });
 }
 
