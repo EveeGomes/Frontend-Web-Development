@@ -74,7 +74,6 @@ export default class Store {
 
   // public method to updatate the state
   playerMove(squareId) {
-    // refactoring
     const stateClone = structuredClone(this.#getState());
 
     stateClone.currentGameMoves.push({
@@ -100,9 +99,7 @@ export default class Store {
     this.#saveState(stateClone);
   }
 
-  // this method will take the stats that are in the currentRoundGames and push them to the allGames array in initialValue. So this will clear out both currentRoundGames and currentGameMoves arrays!
   newRound() {
-    // since a new round will also reset the game, we call the reset method
     this.reset();
 
     const stateClone = structuredClone(this.#getState());
