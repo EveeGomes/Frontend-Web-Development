@@ -105,7 +105,7 @@ export default class Store {
     // since a new round will also reset the game, we call the reset method
     this.reset();
 
-    const stateClone = structuredClone(this.#getState);
+    const stateClone = structuredClone(this.#getState());
     stateClone.history.allGames.push(...stateClone.history.currentRoundGames);
     stateClone.history.currentRoundGames = [];
 

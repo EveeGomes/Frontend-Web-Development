@@ -174,7 +174,6 @@ function init() {
 
   view.bindGameResetEvent((event) => {
     view.closeAll();
-
     store.reset();
 
     view.clearMoves();
@@ -188,8 +187,16 @@ function init() {
   });
 
   view.bindNewRoundEvent((event) => {
-    console.log("New round event");
-    console.log(event);
+    store.newRound();
+
+    view.closeAll();
+    view.clearMoves();
+    view.setTurnIndicator(store.game.currentPlayer);
+    view.updateScoreBoard(
+      store.stats.playerWithStats[0].wins,
+      store.stats.playerWithStats[1].wins,
+      store.stats.ties
+    );
   });
 
   view.bindPlayerMoveEvent((square) => {
