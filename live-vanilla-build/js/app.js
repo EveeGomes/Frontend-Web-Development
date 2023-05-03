@@ -179,6 +179,9 @@ function init() {
 
     view.clearMoves();
     view.setTurnIndicator(store.game.currentPlayer);
+
+    // call the new getter (stats) so we can test it
+    console.log(store.stats);
   });
 
   view.bindNewRoundEvent((event) => {
@@ -209,7 +212,7 @@ function init() {
           : "Tie!"
       );
 
-      return; // add this return because if this code run, it means there's a winner so we no longer move further than this
+      return;
     }
 
     // Set the next player's turn indicator

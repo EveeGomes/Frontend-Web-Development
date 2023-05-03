@@ -13,6 +13,12 @@ export default class Store {
     this.players = players;
   }
 
+  // adding another getter which will give us the total number of wins by player
+  get stats() {
+    // to check:
+    console.log(this.#getState());
+  }
+
   get game() {
     const state = this.#getState();
     const currentPlayer = this.players[state.currentGameMoves.length % 2];
@@ -43,10 +49,10 @@ export default class Store {
     }
 
     return {
-      moves: state.moves,
+      moves: state.currentGameMoves,
       currentPlayer,
       status: {
-        isComplete: winner != null || state.moves.length === 9,
+        isComplete: winner != null || state.currentGameMoves.length === 9,
         winner,
       },
     };
@@ -57,7 +63,7 @@ export default class Store {
     // refactoring
     const stateClone = structuredClone(this.#getState());
 
-    stateClone.moves.push({
+    stateClone.currentGameMoves.push({
       squareId,
       player: this.game.currentPlayer,
     });
