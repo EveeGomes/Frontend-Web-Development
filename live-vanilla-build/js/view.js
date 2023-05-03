@@ -68,7 +68,7 @@ export default class View {
     });
   }
 
-  // this method will avoid cases where we have a number of moves in the game where the turn indicator has a player 2 turn and we reset the game but that turn remains for the player 2 instead of player 1
+  // this method will avoid cases where we have a number of moves in the game and when we refresh the page the content is destroyed. In this case we need this method to reconstruct the moves that have been made on the gameboard on the initialization of the page
   initializeMoves(moves) {
     // pass a moves array of the current game moves
     this.$$.squares.forEach((square) => {
