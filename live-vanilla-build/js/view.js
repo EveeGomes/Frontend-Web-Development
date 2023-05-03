@@ -26,24 +26,24 @@ export default class View {
 
   // render method! The name given here is just a convention :)
   render(game, stats) {
-    // we could pass store so we had the entire module here, but we can be more explicit and pass the game and stats. Using the information comming from those getters we should be able to build our UI entirely
-
-    // we can do some destructoring to make things easier to pass to updateScoreBoard (5h:29min:56s). These destructoring is like referencing these variables instead of defining them all here again or even having the object nasting property in our code
-    const { playerWithStats, ties } = stats; // playerWithStats, ties these come from stats! That's why we're getting them here
+    const { playerWithStats, ties } = stats;
     const {
       moves,
       currentPlayer,
       status: { isComplete, winner },
     } = game;
 
+    // add the functionality we had in initView()
+    this.#closeAll();
+    this.#clearMoves();
+    this.#setTurnIndicator(currentPlayer);
     // here we're rendering the scoreboard.
-    // with that we can go to app.js and remove initView() functionality out from the init() method
-    // so instead of using initView() we're now using view.render()
     this.#updateScoreBoard(
       playerWithStats[0].wins,
       playerWithStats[1].wins,
       ties
     );
+    this.#initializeMoves(moves);
   }
 
   /**

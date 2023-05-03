@@ -63,12 +63,14 @@ function init() {
       return;
     }
 
+    // THIS method will be removed so that we implement this logic in the render method! <<<<<<<<<<<<<<
     // Place an icon of the current player in a square
     view.handlePlayerMove(square, store.game.currentPlayer);
 
     // Advance to the next state by pushing a move to the moves array
-    store.playerMove(+square.id);
+    store.playerMove(+square.id); // this is an important step which will will allow the render method to get the latest verstion of state and recreate the game with
 
+    // THIS method will be removed so that we implement this logic in the render method! <<<<<<<<<<<<<<
     // check whether there's a winner before changing the turn indicator
     if (store.game.status.isComplete) {
       view.openModal(
