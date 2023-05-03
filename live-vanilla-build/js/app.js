@@ -20,6 +20,12 @@ function init() {
   const view = new View();
   const store = new Store("live-t3-storage-key", players);
 
+  // now here we can use addEventListener using store object!
+  store.addEventListener("statechange", () => {
+    view.render(store.game, store.stats);
+  });
+  // by using this method above, we can now remove the call view.render() from methods like resetEvent and others 5h:42min
+
   window.addEventListener("storage", () => {
     // to test:
     console.log("State changed from antoher tab");
@@ -31,13 +37,11 @@ function init() {
   view.render(store.game, store.stats);
 
   view.bindGameResetEvent((event) => {
-    store.reset();
-    view.render(store.game, store.stats);
+    store.reset(); // when we call this method, it'll trigger the statechange event and therefore will call view.render()
   });
 
   view.bindNewRoundEvent((event) => {
-    store.newRound();
-    view.render(store.game, store.stats);
+    store.newRound(); // it'll also trigger statechange event
   });
 
   // Check state and update it
@@ -51,9 +55,7 @@ function init() {
     }
 
     // Advance to the next state by pushing a move to the moves array
-    store.playerMove(+square.id);
-
-    view.render(store.game, store.stats);
+    store.playerMove(+square.id); // since it's also updating the store, it'll trigger again statechange event and call view.render(), that's why we can remove the call
   });
 }
 
