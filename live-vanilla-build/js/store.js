@@ -29,7 +29,14 @@ export default class Store {
     const state = this.#getState();
 
     // make a clone using a build in method of browsers
-    const stateClone = structuredClone(state); // this way stateClone is a completely different/distinct object from state defined before!
+    const stateClone = structuredClone(state);
+
+    stateClone.moves.push({
+      squareId,
+      player: this.game.currentPlayer,
+    });
+
+    this.#saveState(stateClone); // this will be refactored later
   }
 
   #getState() {
