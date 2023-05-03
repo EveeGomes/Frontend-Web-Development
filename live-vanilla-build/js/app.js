@@ -173,8 +173,13 @@ function init() {
   const store = new Store(players);
 
   view.bindGameResetEvent((event) => {
-    console.log("Reset event");
-    console.log(event);
+    view.closeModal();
+
+    store.reset();
+
+    view.clearMoves();
+    // make sure player 1 always start the game even when it's reset. store.game.currentPlayer will give us player 1 (which in the array of player is at index 0: players[0])
+    view.setTurnIndicator(store.game.currentPlayer);
   });
 
   view.bindNewRoundEvent((event) => {

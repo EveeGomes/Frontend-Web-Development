@@ -66,6 +66,10 @@ export default class Store {
     return this.#state;
   }
 
+  reset() {
+    this.#saveState(initialValue);
+  }
+
   #saveState(stateOrFn) {
     const prevState = this.#getState();
 

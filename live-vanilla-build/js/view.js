@@ -10,7 +10,7 @@ export default class View {
     this.$.newRoundBtn = this.#qs('[data-id="new-round-btn"]');
     this.$.modal = this.#qs('[data-id="modal"]');
     this.$.modalText = this.#qs('[data-id="modal-text"]');
-    this.$.modalBt = this.#qs('[data-id="modal-btn"]');
+    this.$.modalBtn = this.#qs('[data-id="modal-btn"]');
     this.$.turn = this.#qs('[data-id="turn"]');
 
     this.$$.squares = this.#qsAll('[data-id="square"]');
@@ -27,6 +27,8 @@ export default class View {
 
   bindGameResetEvent(handler) {
     this.$.resetBtn.addEventListener("click", handler);
+    // register the event listener on modal button as well:
+    this.$.modalBtn.addEventListener("click", handler);
   }
 
   bindNewRoundEvent(handler) {
@@ -46,6 +48,16 @@ export default class View {
   openModal(message) {
     this.$.modal.classList.remove("hidden");
     this.$.modalText.innerText = message;
+  }
+
+  closeModal() {
+    this.$.modal.classList.add("hidden");
+  }
+
+  clearMoves() {
+    this.$$.squares.forEach((square) => {
+      square.replaceChildren();
+    });
   }
 
   #toggleMenu() {
