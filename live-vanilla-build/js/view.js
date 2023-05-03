@@ -33,7 +33,6 @@ export default class View {
     this.$.newRoundBtn.addEventListener("click", handler);
   }
 
-  // this method is looping through the squares and adding an event listener, which will pass the individual square to the handler
   bindPlayerMoveEvent(handler) {
     this.$$.squares.forEach((square) => {
       square.addEventListener("click", handler);

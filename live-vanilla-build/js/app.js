@@ -183,12 +183,8 @@ function init() {
   });
 
   view.bindPlayerMoveEvent((event) => {
-    // reversing the order of these methods because first we need to handle the player move
     const clickedSquare = event.target;
     view.handlePlayerMove(clickedSquare, state.game.currentPlayer);
-
-    // update the state to the next player since we've just made a move by the player above (4h:20min)
-    // therefore we go to store and make a public method
 
     view.setTurnIndicator(players[1]);
   });

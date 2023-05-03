@@ -6,10 +6,9 @@ export default class Store {
   #state = initialValue;
 
   contructor(players) {
-    this.players = players; // this is added since we need the list of players to work on the get game method! So players will be passed to the store class
+    this.players = players;
   }
 
-  // The goal of this method is to take the raw state object (the array of game moves) and calculate useful information from that (like we did in getGameStatus() from App namespace)
   get game() {
     // get the current player (4h:15min)
     const state = this.#getState();
@@ -25,10 +24,8 @@ export default class Store {
 
   // public method to updtate the state
   playerMove(squareId) {
-    // to follow the convention of not updating the state directly
     const state = this.#getState();
 
-    // make a clone using a build in method of browsers
     const stateClone = structuredClone(state);
 
     stateClone.moves.push({
