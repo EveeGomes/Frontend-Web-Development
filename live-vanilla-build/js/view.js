@@ -24,10 +24,19 @@ export default class View {
     });
   }
 
+  // render method! The name given here is just a convention :)
+  render(game, stats) {
+    // we could pass store so we had the entire module here, but we can be more explicit and pass the game and stats. Using the information comming from those getters we should be able to build our UI entirely
+
+    // we can do some destructoring to make things easier to pass to updateScoreBoard
+
+    this.#updateScoreBoard();
+  }
+
   /**
    * Register all the event listeners
    */
-
+  // These remain public so they can be called in the app module (the controller)
   bindGameResetEvent(handler) {
     this.$.resetBtn.addEventListener("click", handler);
     this.$.modalBtn.addEventListener("click", handler);
@@ -46,29 +55,31 @@ export default class View {
   /**
    * DOM helper methods
    */
-  updateScoreBoard(p1Wins, p2Wins, ties) {
+  // make them all private because they're all gonna be called from within the rendering method.
+  // these are all internal implementation details of our view, therefore no one needs to know about this except the view module!
+  #updateScoreBoard(p1Wins, p2Wins, ties) {
     this.$.p1Wins.innerText = `${p1Wins} wins`;
     this.$.p2Wins.innerText = `${p2Wins} wins`;
     this.$.ties.innerText = `${ties} ties`;
   }
 
-  openModal(message) {
+  #openModal(message) {
     this.$.modal.classList.remove("hidden");
     this.$.modalText.innerText = message;
   }
 
-  closeAll() {
+  #closeAll() {
     this.#closeModal();
     this.#closeMenu();
   }
 
-  clearMoves() {
+  #clearMoves() {
     this.$$.squares.forEach((square) => {
       square.replaceChildren();
     });
   }
 
-  initializeMoves(moves) {
+  #initializeMoves(moves) {
     this.$$.squares.forEach((square) => {
       const existingMove = moves.find((move) => move.squareId === +square.id);
 
@@ -100,13 +111,13 @@ export default class View {
     icon.classList.toggle("fa-chevron-left");
   }
 
-  handlePlayerMove(squareEl, player) {
+  #handlePlayerMove(squareEl, player) {
     const icon = document.createElement("i");
     icon.classList.add("fa-solid", player.iconClass, player.colorClass);
     squareEl.replaceChildren(icon);
   }
 
-  setTurnIndicator(player) {
+  #setTurnIndicator(player) {
     const icon = document.createElement("i");
     const label = document.createElement("p");
 
