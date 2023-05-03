@@ -1,5 +1,9 @@
 const initialValue = {
-  moves: [],
+  currentGameMoves: [],
+  history: {
+    currentRoundGames: [],
+    allGames: [],
+  },
 };
 
 export default class Store {
@@ -11,7 +15,7 @@ export default class Store {
 
   get game() {
     const state = this.#getState();
-    const currentPlayer = this.players[state.moves.length % 2];
+    const currentPlayer = this.players[state.currentGameMoves.length % 2];
 
     const winningPatterns = [
       [1, 2, 3],
@@ -27,7 +31,7 @@ export default class Store {
     let winner = null;
 
     for (const player of this.players) {
-      const selectedSquareIds = state.moves
+      const selectedSquareIds = state.currentGameMoves
         .filter((move) => move.player.id === player.id)
         .map((move) => move.squareId);
 
