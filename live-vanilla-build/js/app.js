@@ -63,10 +63,6 @@ function init() {
       return;
     }
 
-    // THIS method will be removed so that we implement this logic in the render method! <<<<<<<<<<<<<<
-    // Place an icon of the current player in a square
-    view.handlePlayerMove(square, store.game.currentPlayer);
-
     // Advance to the next state by pushing a move to the moves array
     store.playerMove(+square.id); // this is an important step which will will allow the render method to get the latest verstion of state and recreate the game with
 
@@ -82,6 +78,7 @@ function init() {
       return;
     }
 
+    // THIS method will be removed so that we implement this logic in the render method! <<<<<<<<<<<<<<
     // Set the next player's turn indicator
     view.setTurnIndicator(store.game.currentPlayer);
   });
