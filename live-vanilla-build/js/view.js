@@ -27,7 +27,6 @@ export default class View {
 
   bindGameResetEvent(handler) {
     this.$.resetBtn.addEventListener("click", handler);
-    // register the event listener on modal button as well:
     this.$.modalBtn.addEventListener("click", handler);
   }
 
@@ -61,7 +60,6 @@ export default class View {
     });
   }
 
-  // making both close methods as private ones since they're only being called in the closeAll method
   #closeModal() {
     this.$.modal.classList.add("hidden");
   }
@@ -70,9 +68,7 @@ export default class View {
     this.$.menuItems.classList.add("hidden");
     this.$.menuBtn.classList.remove("border");
 
-    // reselect the icon to be the one that's pointing down
     const icon = this.$.menuBtn.querySelector("i");
-    // instead of toggle we'll have add and remove:
     icon.classList.add("fa-chevron-down");
     icon.classList.remove("fa-chevron-left");
   }
